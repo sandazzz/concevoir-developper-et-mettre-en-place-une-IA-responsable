@@ -131,4 +131,4 @@ Contenu original adapté pour une diffusion publique et générique.
 
 ---
 
-**Made with 🌱 for a sustainable AI future**
+
