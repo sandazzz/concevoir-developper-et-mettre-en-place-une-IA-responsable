@@ -1861,6 +1861,7 @@ tr:hover {
 
 .resource-card p {
     margin: 0;
+    color: var(--color-white);
     opacity: 0.9;
 }
 
