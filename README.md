@@ -99,7 +99,7 @@ ia-responsable/
 
 ## Contribuer
 
-Les contributions sont les bienvenues ! Consultez [CONTRIBUTING.md](.github/CONTRIBUTING.md) pour les guidelines.
+Les contributions sont les bienvenues ! Consultez [CONTRIBUTING.md](CONTRIBUTING.md) pour les guidelines.
 
 ### Idées d'amélioration
 
@@ -126,6 +126,7 @@ Sous les conditions suivantes :
 Contenu original adapté pour une diffusion publique et générique.
 
 ---
+
 
 
 
