@@ -3,7 +3,7 @@
 Formation interactive sur la conception et le déploiement d'une Intelligence Artificielle responsable, éco-conçue et frugale.
 
 [![License: CC BY-SA 4.0](https://img.shields.io/badge/License-CC%20BY--SA%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by-sa/4.0/)
-[![GitHub Pages](https://img.shields.io/badge/demo-GitHub%20Pages-blue)](https://votre-username.github.io/ia-responsable/)
+[![GitHub Pages](https://img.shields.io/badge/demo-GitHub%20Pages-blue)](https://concevoir-developper-et-mettre-en-place-une-IA-responsable.france-travail.github.io/ia-responsable/)
 
 ## Aperçu
 
@@ -38,7 +38,7 @@ Cette formation d'une journée permet aux équipes techniques et produit d'acqu�
 1. Forkez ce repository
 2. Allez dans **Settings** > **Pages**
 3. Source : sélectionnez `main` branch et `/` (root)
-4. Votre site sera accessible à `https://votre-username.github.io/ia-responsable/`
+4. Votre site sera accessible à `https://concevoir-developper-et-mettre-en-place-une-IA-responsable.votre-username.github.io/`
 
 ### Option 2 : Serveur local
 
@@ -55,10 +55,6 @@ npx serve .
 ```
 
 Ouvrez http://localhost:8000
-
-### Option 3 : Netlify / Vercel
-
-Glissez-déposez le dossier sur [Netlify Drop](https://app.netlify.com/drop) ou connectez votre repo GitHub à Vercel.
 
 ## Structure du projet
 
@@ -130,5 +126,6 @@ Sous les conditions suivantes :
 Contenu original adapté pour une diffusion publique et générique.
 
 ---
+
 
 
