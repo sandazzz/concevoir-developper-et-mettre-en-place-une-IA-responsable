@@ -907,6 +907,10 @@ tr:hover {
     margin-top: var(--spacing-lg);
 }
 
+.lifecycle-note.active {
+    background-color: var(--color-white);
+}
+
 /* --------------------------------------------------------------------------
    Definition Quote
    -------------------------------------------------------------------------- */
@@ -1295,6 +1299,7 @@ tr:hover {
 .role-card.highlight {
     border-left-color: var(--color-primary);
     background: rgba(45, 106, 79, 0.05);
+    grid-column: 1 / -1;
 }
 
 .role-card h4 {
