@@ -1207,10 +1207,14 @@ tr:hover {
 }
 
 .analysis-grid {
-    display: grid;
+    display: none;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: var(--spacing-md);
     margin-top: var(--spacing-md);
+}
+
+.analysis-grid.active {
+    display: grid;
 }
 
 .analysis-pro {
@@ -2103,6 +2107,10 @@ tr:hover {
 
 .decision-node-interactive.completed {
     opacity: 0.6;
+    pointer-events: none;
+}
+
+.decision-node-interactive.completed-no-opacity {
     pointer-events: none;
 }
 

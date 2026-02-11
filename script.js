@@ -16,7 +16,8 @@
     const navLinks = document.querySelectorAll('.nav-menu a');
     const backToTopBtn = document.getElementById('backToTop');
     const sections = document.querySelectorAll('section[id]');
-
+    const analyseResponseButton = document.getElementById("analyseResponseButton")
+    const analyseAnwsers = document.querySelector('.analysis-grid');
     // ==========================================================================
     // Progress Bar
     // ==========================================================================
@@ -384,6 +385,12 @@
                 }
             }
         }, 200));
+
+        analyseResponseButton.addEventListener('click', (e)=>{
+            console.log("J'affiches les réponses !")
+            console.log(analyseAnwsers)
+            analyseAnwsers.classList.add('active');
+        })
     }
 
     // ==========================================================================
@@ -448,8 +455,8 @@
             }
 
             // Mark node as completed
-            node.classList.add('completed');
             node.classList.remove('active');
+            node.classList.add('completed-no-opacity');
 
         } else {
             // Go to next step
@@ -503,7 +510,7 @@
         // Reset all nodes
         const nodes = tree.querySelectorAll('.decision-node-interactive');
         nodes.forEach((node, index) => {
-            node.classList.remove('completed', 'active', 'hidden');
+            node.classList.remove('completed', 'active', 'hidden', "completed-no-opacity");
             if (index === 0) {
                 node.classList.add('active');
             } else {
