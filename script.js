@@ -610,6 +610,151 @@
     `;
   document.head.appendChild(confettiStyle);
 
+  function calculEmpreinteCPU(nBCpusPhysiques, vCpuParCpu = 32) {
+    const result =
+      nBCpusPhysiques * ((vCpuParCpu * 0.17 + 0.491) * 1.97 + 9.14);
+    return result;
+  }
+
+  function parseFootprintValue(value) {
+    if (!value) return 0;
+    const normalized = value.toString().trim().replace(",", ".");
+    const parsed = Number.parseFloat(normalized);
+    return Number.isNaN(parsed) ? 0 : parsed;
+  }
+
+  function updateGlobalTotalDivided() {
+    const cpuCell = document.getElementById("cpu-footprint-result");
+    const ramCell = document.getElementById("ram-footprint-result");
+    const autresCell = document.getElementById("autres-total-footprint");
+    const resultCell = document.getElementById("global-total-divided");
+
+    if (!cpuCell || !ramCell || !autresCell || !resultCell) return;
+
+    const cpuTotal = parseFootprintValue(cpuCell.textContent);
+    const ramTotal = parseFootprintValue(ramCell.textContent);
+    const autresTotal = parseFootprintValue(autresCell.textContent);
+    const globalTotal = (cpuTotal + ramTotal + autresTotal) / 1000;
+
+    resultCell.textContent = globalTotal.toFixed(3).replace(".", ",");
+  }
+
+  function setupCpuFootprintCalculator() {
+    const cpuInput = document.getElementById("cpu-physical-input");
+    const resultCell = document.getElementById("cpu-footprint-result");
+
+    if (!cpuInput || !resultCell) return;
+
+    const updateCpuResult = () => {
+      const nBCpusPhysiques = Number.parseFloat(cpuInput.value);
+      const safeValue =
+        Number.isNaN(nBCpusPhysiques) || nBCpusPhysiques < 0
+          ? 0
+          : nBCpusPhysiques;
+
+      const result = calculEmpreinteCPU(safeValue);
+      resultCell.textContent = safeValue === 0 ? "0" : result.toFixed(2);
+      updateGlobalTotalDivided();
+    };
+
+    cpuInput.addEventListener("input", updateCpuResult);
+    updateCpuResult();
+  }
+
+  function calculEmpreinteRAM(QttDeGoDeRAM, GoModule = 128) {
+    const ramDieParGo = 0.597;
+    const critereDie = 2.2;
+    const critereBase = 5.22;
+    const QttDeBaretteDeRAM = QttDeGoDeRAM / GoModule;
+
+    const result =
+      QttDeBaretteDeRAM * (GoModule * ramDieParGo * critereDie + critereBase);
+
+    return result;
+  }
+
+  function setupRamFootprintCalculator() {
+    const ramInput = document.getElementById("ram-input");
+    const resultCell = document.getElementById("ram-footprint-result");
+
+    if (!ramInput || !resultCell) return;
+
+    const updateRamResult = () => {
+      const quantity = Number.parseFloat(ramInput.value);
+      const safeValue = Number.isNaN(quantity) || quantity < 0 ? 0 : quantity;
+
+      const result = calculEmpreinteRAM(safeValue);
+      resultCell.textContent = safeValue === 0 ? "0" : result.toFixed(2);
+      updateGlobalTotalDivided();
+    };
+
+    ramInput.addEventListener("input", updateRamResult);
+    updateRamResult();
+  }
+
+  function calculEmpreinteAutres(
+    nbPowerSupplyUnit = 2,
+    nbHDD,
+    nbMotherboard = 1,
+    nbRackServer = 1,
+    nbBladeEnclosure = 0,
+    nbBladeServer = 0,
+    nbInterfaceCard = 1,
+    nbServerAssembly = 1,
+  ) {
+    const crPowerSupplyUnit = 24.3;
+    const crHDD = 31.1;
+    const crMotherboard = 66.1;
+    const crRackServer = 150.0;
+    const crBladeEnclosure = 880;
+    const crBladeServer = 30.9;
+    const crInterfaceCard = 33.05;
+    const crServerAssembly = 6.68;
+
+    const emprPowerSupplyUnit = nbPowerSupplyUnit * 2 * crPowerSupplyUnit;
+    const emprHDD = nbHDD * crHDD;
+    const emprMotherboard = nbMotherboard * crMotherboard;
+    const emprRackServer = nbRackServer * crRackServer;
+    const emprBladeEnclosure = nbBladeEnclosure * crBladeEnclosure;
+    const emprBladeServer = nbBladeServer * crBladeServer;
+    const emprInterfaceCard = nbInterfaceCard * crInterfaceCard;
+    const emprServerAssembly = nbServerAssembly * crServerAssembly;
+
+    const total =
+      emprPowerSupplyUnit +
+      emprHDD +
+      emprMotherboard +
+      emprRackServer +
+      emprBladeEnclosure +
+      emprBladeServer +
+      emprInterfaceCard +
+      emprServerAssembly;
+
+    return total;
+  }
+
+  function setupAutresFootprintCalculator() {
+    const hddInput = document.getElementById("autres-hdd-input");
+    const hddFootprintCell = document.getElementById("autres-hdd-footprint");
+    const totalFootprintCell = document.getElementById("autres-total-footprint");
+
+    if (!hddInput || !hddFootprintCell || !totalFootprintCell) return;
+
+    const updateAutresResult = () => {
+      const nbHDD = Number.parseFloat(hddInput.value);
+      const safeNbHDD = Number.isNaN(nbHDD) || nbHDD < 0 ? 0 : nbHDD;
+
+      const hddFootprint = safeNbHDD * 31.1;
+      const total = calculEmpreinteAutres(2, safeNbHDD, 1, 1, 0, 0, 1, 1);
+
+      hddFootprintCell.textContent = hddFootprint.toFixed(1).replace(".", ",");
+      totalFootprintCell.textContent = total.toFixed(1).replace(".", ",");
+      updateGlobalTotalDivided();
+    };
+
+    hddInput.addEventListener("input", updateAutresResult);
+    updateAutresResult();
+  }
 
   // ==========================================================================
   // Initialize
@@ -627,6 +772,10 @@
     setupPrintButton();
     setupCopyLinks();
     initDecisionTrees();
+    setupCpuFootprintCalculator();
+    setupRamFootprintCalculator();
+    setupAutresFootprintCalculator();
+    updateGlobalTotalDivided();
 
     // Log initialization
     console.log("Formation IA Responsable - Site initialisé");

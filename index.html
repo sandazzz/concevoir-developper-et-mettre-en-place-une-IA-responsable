@@ -2026,7 +2026,9 @@
                 </article>
 
                 <article class="content-block practical-case">
-                    <h3>CPU : Empreinte = CPUnb x ( ( CPUcœur/unité x CPUdie/cœur + 0,491 ) x CPUcritère die + CPUcritère base ) </h3>
+                    <h3>Calculatrice : </h3>
+                    <h4>CPU : Empreinte = CPUnb x ( ( CPUcœur/unité x CPUdie/cœur + 0,491 ) x CPUcritère die +
+                        CPUcritère base ) </h4>
                     <div class="table-responsive">
                         <table>
                             <tr>
@@ -2039,7 +2041,11 @@
                             </tr>
                             <tr>
                                 <td><strong>Nombre de CPU Physique</strong></td>
-                                <td><input type="text" name="ligne3-colonne2" /></td>
+                                <td><input id="cpu-physical-input" type="number"
+                                        name="Réponse pour Nombre de CPU Physique" value="0" min="0" step="1"
+                                        placeholder="Ex: 128"
+                                        style="width: 100%; padding: var(--spacing-sm) var(--spacing-md); border: 1px solid var(--color-primary); border-radius: var(--border-radius-md); background-color: var(--color-white); color: var(--color-gray-800); font-size: var(--font-size-sm);" />
+                                </td>
                             </tr>
                             <tr>
                                 <td><strong>vCPU par CPU</strong></td>
@@ -2047,9 +2053,130 @@
                             </tr>
                             <tr>
                                 <td><strong>Total RAM</strong></td>
-                                <td>Ligne 5 - Colonne 2</td>
+                                <td id="cpu-footprint-result">0</td>
                             </tr>
                         </table>
+                    </div>
+                    <h4>RAM : Empreinte = RAMnb x ( ( RAMGo/unité x RAMdie/Go ) x RAMcritère die + RAMcritère base )
+                    </h4>
+                    <div class="table-responsive">
+                        <table>
+                            <tr>
+                                <td><strong>Type/Modèle</strong></td>
+                                <td>AMD EMPIC</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Quantité de Go de RAM</strong></td>
+                                <td>Zen 2</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Quantité de barette de RAM</strong></td>
+                                <td><input id="ram-input" type="number" name="Réponse pour Nombre de CPU Physique"
+                                        value="0" min="0" step="1" placeholder="Ex: 128"
+                                        style="width: 100%; padding: var(--spacing-sm) var(--spacing-md); border: 1px solid var(--color-primary); border-radius: var(--border-radius-md); background-color: var(--color-white); color: var(--color-gray-800); font-size: var(--font-size-sm);" />
+                                </td>
+
+                            </tr>
+                            <tr>
+                                <td><strong>Go/module</strong></td>
+                                <td>128</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Total RAMs</strong></td>
+                                <td id="ram-footprint-result">0</td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <h4>Autres : Empreinte = Elémentnb x Elémentcritère
+                    </h4>
+                    <div class="table-responsive">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Type/Modèle</th>
+                                    <th>Nombre éléments</th>
+                                    <th>Masse (kg)</th>
+                                    <th>Critère élément (kgCO2eq)</th>
+                                    <th>Empreinte (kgCO2eq)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>Power Supply Unit</strong></td>
+                                    <td>2</td>
+                                    <td>2</td>
+                                    <td>24,30</td>
+                                    <td>97,2</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>HDD</strong></td>
+                                    <td><input id="autres-hdd-input" type="number" min="0" step="1" value=""
+                                            style="width: 100%; padding: var(--spacing-xs) var(--spacing-sm); border: 1px solid var(--color-primary); border-radius: var(--border-radius-sm);" />
+                                    </td>
+                                    <td></td>
+                                    <td>31,10</td>
+                                    <td id="autres-hdd-footprint">62,2</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Motherboard</strong></td>
+                                    <td>1</td>
+                                    <td></td>
+                                    <td>66,10</td>
+                                    <td>66,1</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Rack Server</strong></td>
+                                    <td>1</td>
+                                    <td></td>
+                                    <td>150,00</td>
+                                    <td>150,0</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Blade Enclosure</strong></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td>880,00</td>
+                                    <td>0,0</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Blade Server</strong></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td>30,90</td>
+                                    <td>0,0</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Interface card (Network or any others)</strong></td>
+                                    <td>1</td>
+                                    <td></td>
+                                    <td>33,05</td>
+                                    <td>33,1</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Server Assembly</strong></td>
+                                    <td>1</td>
+                                    <td></td>
+                                    <td>6,68</td>
+                                    <td>6,7</td>
+                                </tr>
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <th>Total autres</th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th id="autres-total-footprint"></th>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                    <div class="highlight-box info">
+                        <div class="highlight-content">
+                            <p><strong>Total pour la fabrication (t CO2eq) / serveur :</strong> <span
+                                    id="global-total-divided">0</span></p>
+                        </div>
                     </div>
                 </article>
             </div>
