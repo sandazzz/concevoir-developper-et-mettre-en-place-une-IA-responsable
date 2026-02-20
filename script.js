@@ -611,9 +611,10 @@
   document.head.appendChild(confettiStyle);
 
   function calculEmpreinteCPU(nBCpusPhysiques, vCpuParCpu = 32) {
-    const result =
-      nBCpusPhysiques * ((vCpuParCpu * 0.17 + 0.491) * 1.97 + 9.14);
-    return result;
+    const empreinte =
+      nBCpusPhysiques * ((vCpuParCpu * 0.173333333333 + 0.491) * 1.97 + 9.14);
+      const resultatFinal = Number(empreinte.toFixed(1));
+    return resultatFinal;
   }
 
   function parseFootprintValue(value) {
@@ -636,7 +637,7 @@
     const autresTotal = parseFootprintValue(autresCell.textContent);
     const globalTotal = (cpuTotal + ramTotal + autresTotal) / 1000;
 
-    resultCell.textContent = globalTotal.toFixed(3).replace(".", ",");
+    resultCell.textContent = globalTotal.toFixed(2).replace(".", ",");
   }
 
   function setupCpuFootprintCalculator() {
@@ -662,15 +663,16 @@
   }
 
   function calculEmpreinteRAM(QttDeGoDeRAM, GoModule = 128) {
-    const ramDieParGo = 0.597;
+    const ramDieParGo = 0.596666666666667;
     const critereDie = 2.2;
     const critereBase = 5.22;
     const QttDeBaretteDeRAM = QttDeGoDeRAM / GoModule;
 
-    const result =
+    const empreinte =
       QttDeBaretteDeRAM * (GoModule * ramDieParGo * critereDie + critereBase);
 
-    return result;
+    const resultatFinal = Number(empreinte.toFixed(1))
+    return resultatFinal;
   }
 
   function setupRamFootprintCalculator() {
@@ -730,7 +732,9 @@
       emprInterfaceCard +
       emprServerAssembly;
 
-    return total;
+    const arrondi = Math.round(total);
+
+    return arrondi;
   }
 
   function setupAutresFootprintCalculator() {
