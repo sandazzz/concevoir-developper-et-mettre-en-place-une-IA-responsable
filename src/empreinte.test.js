@@ -44,4 +44,16 @@ describe("calculEmpreinteAutres", () => {
   test("Initialisation", () => {
     expect(calculEmpreinteAutres).toBeDefined();
   });
+
+  test("2 HDD", () => {
+    expect(calculEmpreinteAutres(2, 2)).toBe("415.23");
+  });
+
+  test("4 HDD", () => {
+    expect(calculEmpreinteAutres(2, 4)).toBe("477.43");
+  });
+
+  test("6 HDD", () => {
+    expect(calculEmpreinteAutres(2, 6)).toBe("539.63");
+  });
 });
