@@ -26,6 +26,18 @@ describe("calculEmpreinteRAM", () => {
   test("Initialisation", () => {
     expect(calculEmpreinteRAM).toBeDefined();
   });
+
+  test("100 barettes de ram", () => {
+    expect(calculEmpreinteRAM(100)).toBe(135.3);
+  });
+
+  test("200 barettes de ram", () => {
+    expect(calculEmpreinteRAM(200)).toBe(270.7);
+  });
+
+  test("600 barettes de ram", () => {
+    expect(calculEmpreinteRAM(600)).toBe(812.1);
+  });
 });
 
 describe("calculEmpreinteAutres", () => {
