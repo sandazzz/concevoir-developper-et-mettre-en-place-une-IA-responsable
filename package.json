@@ -1,0 +1,17 @@
+{
+  "name": "concevoir-developper-et-mettre-en-place-une-ia-responsable",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/index.js",
+  "scripts": {
+    "dev": "node src/index.js",
+    "test": "jest"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "packageManager": "pnpm@10.24.0",
+  "devDependencies": {
+    "jest": "^30.2.0"
+  }
+}
