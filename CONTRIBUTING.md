@@ -52,10 +52,16 @@ Types : `feat`, `fix`, `docs`, `style`, `refactor`
 ```
 ├── index.html      # Contenu principal
 ├── styles.css      # Styles (variables en haut)
-├── app.js          # # Point d'entrée JS : initialise les features (navigation, scroll, animations, calculs, arbre de décision) - vanilla, sans dépendance
+├── app.js          # Point d'entrée JS : initialise les features (navigation, scroll, animations, calculs, arbre de décision) - vanilla, sans dépendance
 ├── src/            # Fichiers source JS (features, utils, tests Vitest)
 └── images/         # Ressources visuelles
 ```
+
+Notes importantes :
+
+- Le code de la calculatrice est isolé dans une feature dédiée (`src/features/footprint.js`).
+- Des tests unitaires sont présents pour cette logique de calcul dans `src/tests/footprint.test.js` (Vitest).
+- Un workflow GitHub Actions est configuré pour builder et héberger le site sur GitHub Pages (`.github/workflows/deploy.yml`).
 
 ## Tests locaux
 
