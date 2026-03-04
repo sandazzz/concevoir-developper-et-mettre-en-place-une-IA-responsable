@@ -183,116 +183,6 @@
       }
     }
 
-    // ==========================================================================
-    // Table of Contents Generation (for accessibility)
-    // ==========================================================================
-    function generateTableOfContents() {
-      const toc = document.getElementById("toc");
-      if (!toc) return;
-
-      const headings = document.querySelectorAll("main h2, main h3");
-      const tocList = document.createElement("ul");
-
-      headings.forEach((heading, index) => {
-        // Ensure heading has an ID
-        if (!heading.id) {
-          heading.id = "heading-" + index;
-        }
-
-        const listItem = document.createElement("li");
-        const link = document.createElement("a");
-        link.href = "#" + heading.id;
-        link.textContent = heading.textContent;
-        link.className = heading.tagName === "H3" ? "toc-h3" : "toc-h2";
-
-        listItem.appendChild(link);
-        tocList.appendChild(listItem);
-      });
-
-      toc.appendChild(tocList);
-    }
-
-    // ==========================================================================
-    // Print Functionality
-    // ==========================================================================
-    function setupPrintButton() {
-      const printBtn = document.getElementById("printBtn");
-      if (printBtn) {
-        printBtn.addEventListener("click", () => {
-          window.print();
-        });
-      }
-    }
-
-    // ==========================================================================
-    // Copy Link to Section
-    // ==========================================================================
-    function setupCopyLinks() {
-      const headings = document.querySelectorAll("h2[id], h3[id]");
-
-      headings.forEach((heading) => {
-        heading.style.cursor = "pointer";
-        heading.title = "Cliquez pour copier le lien vers cette section";
-
-        heading.addEventListener("click", async () => {
-          const url =
-            window.location.origin +
-            window.location.pathname +
-            "#" +
-            heading.id;
-
-          try {
-            await navigator.clipboard.writeText(url);
-            showNotification("Lien copié !");
-          } catch (err) {
-            // Fallback for older browsers
-            const textArea = document.createElement("textarea");
-            textArea.value = url;
-            document.body.appendChild(textArea);
-            textArea.select();
-            document.execCommand("copy");
-            document.body.removeChild(textArea);
-            showNotification("Lien copié !");
-          }
-        });
-      });
-    }
-
-    // ==========================================================================
-    // Notification Toast
-    // ==========================================================================
-    function showNotification(message) {
-      // Remove existing notification
-      const existing = document.querySelector(".notification-toast");
-      if (existing) {
-        existing.remove();
-      }
-
-      // Create new notification
-      const notification = document.createElement("div");
-      notification.className = "notification-toast";
-      notification.textContent = message;
-      notification.style.cssText = `
-            position: fixed;
-            bottom: 100px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: #2d6a4f;
-            color: white;
-            padding: 12px 24px;
-            border-radius: 8px;
-            font-size: 14px;
-            z-index: 1000;
-            animation: fadeInOut 2s ease forwards;
-        `;
-
-      document.body.appendChild(notification);
-
-      // Remove after animation
-      setTimeout(() => {
-        notification.remove();
-      }, 2000);
-    }
 
     // Add animation keyframes
     const style = document.createElement("style");
@@ -416,9 +306,7 @@
       // Setup features
       initEventListeners();
       setupIntersectionObserver();
-      generateTableOfContents();
-      setupPrintButton();
-      setupCopyLinks();
+      
     }
 
     return { init };
