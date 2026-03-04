@@ -184,38 +184,6 @@
     }
 
 
-    // Add animation keyframes
-    const style = document.createElement("style");
-    style.textContent = `
-        @keyframes fadeInOut {
-            0% { opacity: 0; transform: translateX(-50%) translateY(20px); }
-            20% { opacity: 1; transform: translateX(-50%) translateY(0); }
-            80% { opacity: 1; transform: translateX(-50%) translateY(0); }
-            100% { opacity: 0; transform: translateX(-50%) translateY(-20px); }
-        }
-
-        .animate-ready {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.6s ease, transform 0.6s ease;
-        }
-
-        .animate-in {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .nav-menu a.active {
-            color: #2d6a4f;
-            background-color: rgba(45, 106, 79, 0.1);
-        }
-
-        .site-header.scrolled {
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-    `;
-    document.head.appendChild(style);
-
     // ==========================================================================
     // Throttle Function
     // ==========================================================================
