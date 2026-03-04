@@ -52,18 +52,24 @@ Types : `feat`, `fix`, `docs`, `style`, `refactor`
 ```
 ├── index.html      # Contenu principal
 ├── styles.css      # Styles (variables en haut)
-├── script.js       # Interactions
+├── app.js          # # Point d'entrée JS : initialise les features (navigation, scroll, animations, calculs, arbre de décision) - vanilla, sans dépendance
+├── src/            # Fichiers source JS (features, utils, tests Vitest)
 └── images/         # Ressources visuelles
 ```
 
 ## Tests locaux
 
-```bash
-# Python
-python -m http.server 8000
+Installez node v25.2.1 et pnpm
 
-# Node.js
-npx serve .
+```bash
+# Installer les dépendances
+pnpm install
+
+# Lancer le serveur de développement Vite
+pnpm run dev
+
+#Lancer les tests
+pnpm run test
 ```
 
 ## Questions ?
