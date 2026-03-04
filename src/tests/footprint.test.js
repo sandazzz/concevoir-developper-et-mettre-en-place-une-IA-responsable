@@ -1,8 +1,9 @@
-const {
+import { describe, expect, test } from "vitest";
+import {
   calculEmpreinteCPU,
   calculEmpreinteRAM,
   calculEmpreinteAutres,
-} = require("./empreinte");
+} from "../features/footprint.js";
 
 describe("calculEmpreinteCPU", () => {
   test("Initialisation", () => {
