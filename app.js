@@ -445,22 +445,6 @@
       }
     }
 
-    // Add confetti animation keyframes
-    const confettiStyle = document.createElement("style");
-    confettiStyle.textContent = `
-        @keyframes confettiFall {
-            0% {
-                opacity: 1;
-                transform: translateY(0) rotate(0deg);
-            }
-            100% {
-                opacity: 0;
-                transform: translateY(-100px) rotate(720deg);
-            }
-        }
-    `;
-    document.head.appendChild(confettiStyle);
-
     const init = () => {
       const trees = document.querySelectorAll(".decision-tree-interactive");
 

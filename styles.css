@@ -364,6 +364,18 @@ cite {
   }
 }
 
+@keyframes confettiFall {
+  0% {
+    opacity: 1;
+    transform: translateY(0) rotate(0deg);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateY(-100px) rotate(720deg);
+  }
+}
+
 .animate-ready {
   opacity: 0;
   transform: translateY(20px);
