@@ -67,7 +67,7 @@ ia-responsable/
 ├── README.md           # Ce fichier
 ├── LICENSE             # Licence CC BY-SA 4.0
 └── .github/
-    └── CONTRIBUTING.md # Guide de contribution
+└── CONTRIBUTING.md     # Guide de contribution
 ```
 
 ## Personnalisation
