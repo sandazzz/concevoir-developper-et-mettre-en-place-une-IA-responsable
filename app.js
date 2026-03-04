@@ -1,35 +1,28 @@
 (function () {
   "use strict";
-  
+
   const Ui = (() => {
+    function throttle(func, limit) {
+      let inThrottle;
+      return function (...args) {
+        if (!inThrottle) {
+          func.apply(this, args);
+          inThrottle = true;
+          setTimeout(() => (inThrottle = false), limit);
+        }
+      };
+    }
     // ==========================================================================
     // DOM Elements
     // ==========================================================================
     const header = document.querySelector(".site-header");
-    const progressBar = document.getElementById("progressBar");
     const mobileMenuToggle = document.querySelector(".mobile-menu-toggle");
     const navMenu = document.getElementById("nav-menu");
-    const navLinks = document.querySelectorAll(".nav-menu a");
-    const backToTopBtn = document.getElementById("backToTop");
-    const sections = document.querySelectorAll("section[id]");
+
     const analyseResponseButton = document.getElementById(
       "analyseResponseButton",
     );
     const analyseAnwsers = document.querySelector(".analysis-grid");
-
-    // ==========================================================================
-    // Progress Bar
-    // ==========================================================================
-    function updateProgressBar() {
-      const scrollTop = window.scrollY;
-      const docHeight =
-        document.documentElement.scrollHeight - window.innerHeight;
-      const scrollPercent = (scrollTop / docHeight) * 100;
-
-      if (progressBar) {
-        progressBar.style.width = scrollPercent + "%";
-      }
-    }
 
     // ==========================================================================
     // Mobile Menu
@@ -50,47 +43,6 @@
     function closeMobileMenu() {
       mobileMenuToggle.setAttribute("aria-expanded", "false");
       navMenu.classList.remove("active");
-    }
-
-    // ==========================================================================
-    // Back to Top Button
-    // ==========================================================================
-    function toggleBackToTop() {
-      if (window.scrollY > 500) {
-        backToTopBtn.classList.add("visible");
-      } else {
-        backToTopBtn.classList.remove("visible");
-      }
-    }
-
-    function scrollToTop() {
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth",
-      });
-    }
-
-    // ==========================================================================
-    // Active Navigation Link
-    // ==========================================================================
-    function updateActiveNavLink() {
-      const scrollY = window.scrollY;
-      const headerHeight = header ? header.offsetHeight : 0;
-
-      sections.forEach((section) => {
-        const sectionTop = section.offsetTop - headerHeight - 100;
-        const sectionBottom = sectionTop + section.offsetHeight;
-        const sectionId = section.getAttribute("id");
-
-        if (scrollY >= sectionTop && scrollY < sectionBottom) {
-          navLinks.forEach((link) => {
-            link.classList.remove("active");
-            if (link.getAttribute("href") === "#" + sectionId) {
-              link.classList.add("active");
-            }
-          });
-        }
-      });
     }
 
     // ==========================================================================
@@ -183,43 +135,13 @@
       }
     }
 
-
-    // ==========================================================================
-    // Throttle Function
-    // ==========================================================================
-    function throttle(func, limit) {
-      let inThrottle;
-      return function (...args) {
-        if (!inThrottle) {
-          func.apply(this, args);
-          inThrottle = true;
-          setTimeout(() => (inThrottle = false), limit);
-        }
-      };
-    }
-
     // ==========================================================================
     // Event Listeners
     // ==========================================================================
     function initEventListeners() {
-      // Scroll events (throttled)
-      const throttledScroll = throttle(() => {
-        updateProgressBar();
-        toggleBackToTop();
-        updateActiveNavLink();
-        handleHeaderScroll();
-      }, 100);
-
-      window.addEventListener("scroll", throttledScroll);
-
       // Mobile menu
       if (mobileMenuToggle) {
         mobileMenuToggle.addEventListener("click", toggleMobileMenu);
-      }
-
-      // Back to top
-      if (backToTopBtn) {
-        backToTopBtn.addEventListener("click", scrollToTop);
       }
 
       // Anchor links
@@ -266,16 +188,93 @@
     // Public init (keeps your original call pattern)
     // ==========================================================================
     function init() {
-      // Initial state
-      updateProgressBar();
-      toggleBackToTop();
-      updateActiveNavLink();
-
       // Setup features
       initEventListeners();
       setupIntersectionObserver();
-      
     }
+
+    return { init };
+  })();
+
+  const ScrollFeatures = (() => {
+    const progressBar = document.getElementById("progressBar");
+
+    function updateProgressBar() {
+      const scrollTop = window.scrollY;
+      const docHeight =
+        document.documentElement.scrollHeight - window.innerHeight;
+      const scrollPercent = (scrollTop / docHeight) * 100;
+
+      if (progressBar) {
+        progressBar.style.width = scrollPercent + "%";
+      }
+    }
+
+    const backToTopBtn = document.getElementById("backToTop");
+
+    function toggleBackToTop() {
+      if (window.scrollY > 500) {
+        backToTopBtn.classList.add("visible");
+      } else {
+        backToTopBtn.classList.remove("visible");
+      }
+    }
+
+    function scrollToTop() {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
+    }
+
+    const header = document.querySelector(".site-header");
+    const navLinks = document.querySelectorAll(".nav-menu a");
+    const sections = document.querySelectorAll("section[id]");
+
+    function updateActiveNavLink() {
+      const scrollY = window.scrollY;
+      const headerHeight = header ? header.offsetHeight : 0;
+
+      sections.forEach((section) => {
+        const sectionTop = section.offsetTop - headerHeight - 100;
+        const sectionBottom = sectionTop + section.offsetHeight;
+        const sectionId = section.getAttribute("id");
+
+        if (scrollY >= sectionTop && scrollY < sectionBottom) {
+          navLinks.forEach((link) => {
+            link.classList.remove("active");
+            if (link.getAttribute("href") === "#" + sectionId) {
+              link.classList.add("active");
+            }
+          });
+        }
+      });
+    }
+
+    function throttle(func, limit) {
+      let inThrottle;
+      return function (...args) {
+        if (!inThrottle) {
+          func.apply(this, args);
+          inThrottle = true;
+          setTimeout(() => (inThrottle = false), limit);
+        }
+      };
+    }
+
+    const init = () => {
+      const throttledScroll = throttle(() => {
+        updateProgressBar();
+        toggleBackToTop();
+        updateActiveNavLink();
+      }, 100);
+
+      window.addEventListener("scroll", throttledScroll);
+
+      if (backToTopBtn) {
+        backToTopBtn.addEventListener("click", scrollToTop);
+      }
+    };
 
     return { init };
   })();
@@ -593,6 +592,7 @@
   const App = (() => {
     const init = () => {
       Ui.init();
+      ScrollFeatures.init();
       DecisionTree.init();
       Footprint.init();
       console.log("Formation IA Responsable - Site initialisé");
