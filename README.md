@@ -47,14 +47,14 @@ Cette formation d'une journée permet aux équipes techniques et produit d'acqu�
 git clone https://github.com/votre-username/ia-responsable.git
 cd ia-responsable
 
-# Serveur Python
-python -m http.server 8000
+# Installer les dépendances
+pnpm install
 
-# Ou avec Node.js
-npx serve .
+# Lancer le serveur de développement Vite
+pnpm run dev
 ```
 
-Ouvrez http://localhost:8000
+Ouvrez l'URL affichée par Vite (généralement http://localhost:5173)
 
 ## Structure du projet
 
@@ -62,12 +62,12 @@ Ouvrez http://localhost:8000
 ia-responsable/
 ├── index.html          # Page unique avec tout le contenu
 ├── styles.css          # Styles CSS (responsive, dark mode ready)
-├── script.js           # Interactions JS (vanilla, sans dépendance)
+├── app.js              # Point d'entrée JS : initialise les features (navigation, scroll, animations, calculs, arbre de décision) - vanilla, sans dépendance
 ├── images/             # Ressources visuelles
 ├── README.md           # Ce fichier
 ├── LICENSE             # Licence CC BY-SA 4.0
 └── .github/
-    └── CONTRIBUTING.md # Guide de contribution
+└── CONTRIBUTING.md     # Guide de contribution
 ```
 
 ## Personnalisation
