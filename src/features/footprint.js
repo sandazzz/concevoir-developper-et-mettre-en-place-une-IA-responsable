@@ -66,18 +66,27 @@
     const ramInput = document.getElementById("ram-input");
     const ramResult = document.getElementById("ram-footprint-result");
 
+    const ramGoPerModule = document.getElementById("ram-go-per-module");
+    const ramBaretteOutput = document.getElementById("ram-barette-output");
+
     const hddInput = document.getElementById("autres-hdd-input");
     const hddResult = document.getElementById("autres-hdd-footprint");
     const autresTotalResult = document.getElementById("autres-total-footprint");
 
     const totalCell = document.getElementById("global-total-divided");
 
+    const updateRamGoOutput = () => {
+      const value = ramInput.value / Number(ramGoPerModule.textContent);
+      if (ramBaretteOutput) {
+        ramBaretteOutput.textContent = value;
+      }
+    }
     const updateTotal = () => {
       const cpu = Number(cpuResult.textContent) || 0;
       const ram = Number(ramResult.textContent) || 0;
       const totalAutres = Number(autresTotalResult.textContent) || 0;
 
-      const total = ((cpu + ram + totalAutres) / 1000).toFixed(2);
+      const total = ((cpu + ram + totalAutres)).toFixed(2);
 
       if (totalCell) {
         totalCell.textContent = total;
@@ -98,6 +107,7 @@
         const value = ramInput.value;
         const result = calculEmpreinteRAM(value);
         ramResult.textContent = result;
+        updateRamGoOutput();
         updateTotal();
       });
     }
