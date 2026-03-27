@@ -189,6 +189,7 @@ const Footprint = () => {
 
     familyGpu1.addEventListener("change", updateGpu1);
     nbGpu1.addEventListener("input", updateGpu1);
+    updateGpu1();
   }
 
   if (familyGpu2 && nbGpu2 && gpuCriterion2 && gpuResult2) {
@@ -205,6 +206,7 @@ const Footprint = () => {
 
     familyGpu2.addEventListener("change", updateGpu2);
     nbGpu2.addEventListener("input", updateGpu2);
+    updateGpu2();
   }
 
   if (ssdInput && ssdResult && ssdNb) {

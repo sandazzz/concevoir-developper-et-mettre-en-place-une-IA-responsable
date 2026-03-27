@@ -155,19 +155,6 @@ li {
   top: var(--spacing-md);
   color: var(--color-white);
 }
-
-.sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border: 0;
-}
-
 /* --------------------------------------------------------------------------
    Layout
    -------------------------------------------------------------------------- */
@@ -451,11 +438,9 @@ cite {
    -------------------------------------------------------------------------- */
 .hero {
   padding: calc(var(--header-height) + var(--spacing-4xl)) 0 var(--spacing-4xl);
-  background: linear-gradient(
-    135deg,
-    var(--color-primary-dark) 0%,
-    var(--color-primary) 100%
-  );
+  background: linear-gradient(135deg,
+      var(--color-primary-dark) 0%,
+      var(--color-primary) 100%);
   color: var(--color-white);
   text-align: center;
 }
@@ -695,11 +680,9 @@ cite {
   top: 0;
   bottom: 0;
   width: 2px;
-  background: linear-gradient(
-    to bottom,
-    var(--color-primary),
-    var(--color-accent)
-  );
+  background: linear-gradient(to bottom,
+      var(--color-primary),
+      var(--color-accent));
 }
 
 .timeline-item {
@@ -810,11 +793,9 @@ cite {
 }
 
 .stat-card {
-  background: linear-gradient(
-    135deg,
-    var(--color-primary) 0%,
-    var(--color-primary-dark) 100%
-  );
+  background: linear-gradient(135deg,
+      var(--color-primary) 0%,
+      var(--color-primary-dark) 100%);
   color: var(--color-white);
   padding: var(--spacing-lg);
   border-radius: var(--border-radius-lg);
@@ -1071,11 +1052,9 @@ tr:hover {
   justify-content: center;
   width: 40px;
   height: 40px;
-  background: linear-gradient(
-    135deg,
-    var(--color-primary),
-    var(--color-accent)
-  );
+  background: linear-gradient(135deg,
+      var(--color-primary),
+      var(--color-accent));
   color: var(--color-white);
   border-radius: 50%;
   font-weight: 700;
@@ -1290,14 +1269,369 @@ tr:hover {
    Case Study
    -------------------------------------------------------------------------- */
 .practical-case {
-  background: linear-gradient(
-    135deg,
-    rgba(45, 106, 79, 0.05),
-    rgba(116, 198, 157, 0.1)
-  );
+  background: linear-gradient(135deg,
+      rgba(45, 106, 79, 0.05),
+      rgba(116, 198, 157, 0.1));
   padding: var(--spacing-xl);
   border-radius: var(--border-radius-lg);
   border: 2px solid var(--color-primary);
+}
+
+.calculator-studio {
+  background:
+    linear-gradient(180deg,
+      rgba(247, 244, 235, 0.92),
+      rgba(255, 255, 255, 0.96)),
+    linear-gradient(135deg, rgba(45, 106, 79, 0.04), transparent 55%);
+  border-color: rgba(45, 106, 79, 0.45);
+}
+
+.calculator-studio-shell {
+  display: grid;
+  gap: var(--spacing-lg);
+}
+
+.calculator-studio-main {
+  display: grid;
+  gap: var(--spacing-lg);
+}
+
+.calculator-studio-heading {
+  padding-bottom: var(--spacing-md);
+  border-bottom: 2px solid rgba(45, 106, 79, 0.12);
+}
+
+.calculator-kicker {
+  display: inline-block;
+  margin-bottom: var(--spacing-sm);
+  padding: 0.2rem 0.55rem;
+  border: 1px solid rgba(45, 106, 79, 0.28);
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-primary-dark);
+  background: rgba(255, 255, 255, 0.7);
+}
+
+.calculator-strip {
+  display: grid;
+  gap: var(--spacing-md);
+  padding: var(--spacing-lg);
+  border-radius: 1.25rem;
+  background: rgba(255, 255, 255, 0.82);
+  border: 1px solid rgba(45, 106, 79, 0.12);
+  box-shadow: 0 10px 25px rgba(59, 80, 64, 0.07);
+}
+
+.calculator-strip-head {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: var(--spacing-md);
+  align-items: start;
+}
+
+.calculator-strip-head h4 {
+  margin-bottom: var(--spacing-xs);
+  color: var(--color-primary-dark);
+}
+
+.calculator-strip-head p {
+  margin: 0;
+  color: var(--color-gray-600);
+}
+
+.calculator-strip-index {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 0.75rem;
+  font-weight: 700;
+  color: var(--color-primary-dark);
+  background: linear-gradient(135deg,
+      rgba(45, 106, 79, 0.14),
+      rgba(233, 196, 106, 0.35));
+}
+
+.calculator-facts {
+  display: grid;
+  gap: 1px;
+  border: 1px solid rgba(45, 106, 79, 0.12);
+  border-radius: var(--border-radius-md);
+  overflow: hidden;
+  background: rgba(45, 106, 79, 0.12);
+}
+
+.calculator-fact {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--spacing-md);
+  padding: 0.9rem 1rem;
+  background: rgba(250, 250, 247, 0.96);
+}
+
+.calculator-fact span,
+.calculator-output-label,
+.calculator-input-label {
+  color: var(--color-gray-600);
+  font-size: var(--font-size-sm);
+}
+
+.calculator-fact strong {
+  color: var(--color-primary-dark);
+}
+
+.calculator-action-row {
+  display: grid;
+  gap: var(--spacing-md);
+}
+
+.calculator-field {
+  display: grid;
+  gap: var(--spacing-sm);
+}
+
+.calculator-input {
+  width: 100%;
+  padding: 0.9rem 1rem;
+  border: 1px solid rgba(45, 106, 79, 0.2);
+  border-radius: 0.9rem;
+  background: #fff;
+  color: var(--color-gray-800);
+  font-size: var(--font-size-base);
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.2s ease;
+}
+
+.calculator-input:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 4px rgba(233, 196, 106, 0.18);
+  transform: translateY(-1px);
+}
+
+.calculator-inline-result {
+  display: grid;
+  gap: 0.15rem;
+  align-content: start;
+  padding: 1rem;
+  border-radius: var(--border-radius-md);
+  background: linear-gradient(135deg,
+      rgba(45, 106, 79, 0.08),
+      rgba(45, 106, 79, 0.02));
+}
+
+.calculator-inline-result strong {
+  font-size: clamp(1.8rem, 8vw, 2.6rem);
+  line-height: 1;
+  color: var(--color-primary-dark);
+}
+
+.calculator-output-unit {
+  color: var(--color-gray-600);
+  font-size: var(--font-size-sm);
+}
+
+.calculator-ledger {
+  display: grid;
+  gap: 1px;
+  border: 1px solid rgba(45, 106, 79, 0.12);
+  border-radius: var(--border-radius-md);
+  overflow: hidden;
+  overflow-x: auto;
+  background: rgba(45, 106, 79, 0.12);
+}
+
+.calculator-matrix {
+  display: grid;
+  width: fit-content;
+  max-width: 100%;
+  justify-self: start;
+  gap: 1px;
+  border: 1px solid rgba(45, 106, 79, 0.12);
+  border-radius: var(--border-radius-md);
+  overflow: hidden;
+  overflow-x: auto;
+  background: rgba(45, 106, 79, 0.12);
+}
+
+.calculator-matrix-header,
+.calculator-matrix-row {
+  display: grid;
+  grid-template-columns: minmax(9rem, 1.15fr) repeat(3, minmax(6.5rem, 0.9fr));
+  min-width: 31rem;
+  gap: var(--spacing-sm);
+  align-items: center;
+  padding: 0.9rem 1rem;
+  background: rgba(255, 255, 255, 0.96);
+}
+
+.calculator-matrix-header {
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--color-primary-dark);
+  background: rgba(45, 106, 79, 0.08);
+}
+
+.calculator-matrix-row {
+  color: var(--color-primary-dark);
+}
+
+.calculator-select {
+  width: 75%;
+  appearance: none;
+  background-image:
+    linear-gradient(45deg, transparent 50%, rgba(45, 106, 79, 0.85) 50%),
+    linear-gradient(135deg, rgba(45, 106, 79, 0.85) 50%, transparent 50%);
+  background-position:
+    calc(100% - 1.2rem) calc(50% - 0.14rem),
+    calc(100% - 0.85rem) calc(50% - 0.14rem);
+  background-size: 0.38rem 0.38rem, 0.38rem 0.38rem;
+  background-repeat: no-repeat;
+  padding-right: 2.2rem;
+}
+
+.calculator-matrix-total {
+  display: flex;
+  min-width: 31rem;
+  gap: var(--spacing-sm);
+  align-items: baseline;
+  padding: 1rem;
+  background: linear-gradient(
+    135deg,
+    rgba(45, 106, 79, 0.12),
+    rgba(45, 106, 79, 0.03)
+  );
+}
+
+.calculator-matrix-total strong {
+  font-size: 1.4rem;
+  color: var(--color-primary-dark);
+}
+
+.calculator-ledger-header,
+.calculator-ledger-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1.5fr) repeat(3, minmax(0, 1fr));
+  min-width: 34rem;
+  gap: var(--spacing-sm);
+  align-items: center;
+  padding: 0.9rem 1rem;
+  background: rgba(255, 255, 255, 0.96);
+}
+
+.calculator-ledger-header {
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--color-primary-dark);
+  background: rgba(45, 106, 79, 0.08);
+}
+
+.calculator-ledger-row strong {
+  color: var(--color-primary-dark);
+}
+
+.calculator-ledger-row-input {
+  background: rgba(255, 250, 240, 0.96);
+}
+
+.calculator-inline-input {
+  display: block;
+  min-width: 0;
+}
+
+.calculator-inline-input .calculator-input {
+  padding: 0.6rem 0.75rem;
+  font-size: var(--font-size-sm);
+}
+
+.calculator-ledger-total {
+  display: flex;
+  min-width: 34rem;
+  gap: var(--spacing-sm);
+  align-items: baseline;
+  padding: 1rem;
+  background: linear-gradient(
+    135deg,
+    rgba(45, 106, 79, 0.12),
+    rgba(45, 106, 79, 0.03)
+  );
+}
+
+.calculator-ledger-total strong {
+  font-size: 1.4rem;
+  color: var(--color-primary-dark);
+}
+
+.calculator-summary {
+  display: grid;
+  gap: var(--spacing-xs);
+  padding: var(--spacing-lg);
+  border-radius: 1.5rem;
+  background: linear-gradient(160deg, #244b39, #376b52);
+  color: var(--color-white);
+  box-shadow: var(--shadow-lg);
+}
+
+.calculator-summary-label {
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  opacity: 0.82;
+}
+
+.calculator-summary-value {
+  font-size: var(--font-size-2xl);
+  line-height: 1;
+}
+
+.calculator-summary-unit,
+.calculator-summary-note {
+  opacity: 0.88;
+}
+
+.calculator-summary-note {
+  margin: var(--spacing-sm) 0 0;
+  font-size: var(--font-size-sm);
+}
+
+@media (min-width: 481px) {
+  .calculator-action-row {
+    grid-template-columns: minmax(0, 1.6fr) minmax(180px, 0.8fr);
+  }
+}
+
+@media (min-width: 769px) {
+  .calculator-studio-shell {
+    grid-template-columns: minmax(0, 1.8fr) minmax(260px, 0.7fr);
+    align-items: start;
+  }
+
+  .calculator-summary {
+    position: sticky;
+    top: calc(var(--header-height) + var(--spacing-lg));
+  }
+
+  .calculator-ledger-header,
+  .calculator-ledger-row {
+    grid-template-columns: minmax(0, 2fr) repeat(3, minmax(110px, 1fr));
+  }
+
+  .calculator-matrix-header,
+  .calculator-matrix-row {
+      grid-template-columns: minmax(0, 1.5fr) repeat(3, minmax(0, 1fr));
+
+  }
 }
 
 .case-study {
@@ -1792,11 +2126,9 @@ tr:hover {
 .metric-card {
   text-align: center;
   padding: var(--spacing-lg);
-  background: linear-gradient(
-    135deg,
-    var(--color-primary),
-    var(--color-primary-dark)
-  );
+  background: linear-gradient(135deg,
+      var(--color-primary),
+      var(--color-primary-dark));
   color: var(--color-white);
   border-radius: var(--border-radius-lg);
 }
@@ -1917,11 +2249,9 @@ tr:hover {
   justify-content: center;
   width: 48px;
   height: 48px;
-  background: linear-gradient(
-    135deg,
-    var(--color-primary),
-    var(--color-accent)
-  );
+  background: linear-gradient(135deg,
+      var(--color-primary),
+      var(--color-accent));
   color: var(--color-white);
   border-radius: 50%;
   font-weight: 700;
@@ -1947,11 +2277,9 @@ tr:hover {
    Conclusion Section
    -------------------------------------------------------------------------- */
 .conclusion-section {
-  background: linear-gradient(
-    135deg,
-    var(--color-primary-dark) 0%,
-    var(--color-primary) 100%
-  );
+  background: linear-gradient(135deg,
+      var(--color-primary-dark) 0%,
+      var(--color-primary) 100%);
   color: var(--color-white);
 }
 
@@ -2361,29 +2689,23 @@ tr:hover {
 }
 
 .result-card.positive {
-  background: linear-gradient(
-    135deg,
-    rgba(45, 106, 79, 0.1),
-    rgba(116, 198, 157, 0.2)
-  );
+  background: linear-gradient(135deg,
+      rgba(45, 106, 79, 0.1),
+      rgba(116, 198, 157, 0.2));
   border: 2px solid var(--color-success);
 }
 
 .result-card.negative {
-  background: linear-gradient(
-    135deg,
-    rgba(231, 111, 81, 0.1),
-    rgba(231, 111, 81, 0.2)
-  );
+  background: linear-gradient(135deg,
+      rgba(231, 111, 81, 0.1),
+      rgba(231, 111, 81, 0.2));
   border: 2px solid var(--color-danger);
 }
 
 .result-card.warning {
-  background: linear-gradient(
-    135deg,
-    rgba(233, 196, 106, 0.2),
-    rgba(233, 196, 106, 0.3)
-  );
+  background: linear-gradient(135deg,
+      rgba(233, 196, 106, 0.2),
+      rgba(233, 196, 106, 0.3));
   border: 2px solid var(--color-warning);
 }
 
@@ -2623,6 +2945,7 @@ tr:hover {
    Print Styles
    -------------------------------------------------------------------------- */
 @media print {
+
   .site-header,
   .back-to-top,
   .hero-cta,
@@ -2651,6 +2974,7 @@ tr:hover {
    Reduced Motion
    -------------------------------------------------------------------------- */
 @media (prefers-reduced-motion: reduce) {
+
   *,
   *::before,
   *::after {
