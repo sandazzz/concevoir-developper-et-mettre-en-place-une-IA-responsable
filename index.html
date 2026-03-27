@@ -34,7 +34,7 @@
       type="image/svg+xml"
       href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌱</text></svg>"
     />
-
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/5/w3.css" />
     <!-- Schema.org markup for SEO -->
     <script type="application/ld+json">
       {
@@ -2120,350 +2120,376 @@
                 </div>
               </div>
             </div>
+            <button
+              onclick="document.getElementById('id01').style.display = 'block'"
+              class="w3-button"
+            >
+              Open Modal
+            </button>
           </article>
 
-          <article class="content-block practical-case calculator-studio">
-            <div class="calculator-studio-shell">
-              <div class="calculator-studio-main">
-                <div class="calculator-studio-heading">
-                  <span class="calculator-kicker">Calculatrice</span>                 
+          <div id="id01" class="w3-modal">
+            <article class="content-block practical-case calculator-studio">
+              <div class="calculator-studio-shell">
+                <div class="calculator-studio-main">
+                  <div class="calculator-studio-heading">
+                    <span class="calculator-kicker">Calculatrice</span>
+                  </div>
+
+                  <section class="calculator-strip">
+                    <div class="calculator-strip-head">
+                      <span class="calculator-strip-index">A</span>
+                      <div>
+                        <h4>Paramétrage CPU</h4>
+                        <p>Socle matériel processeur utilisé pour le calcul.</p>
+                      </div>
+                    </div>
+                    <div class="calculator-facts">
+                      <div class="calculator-fact">
+                        <span>Type / Modèle</span>
+                        <strong>AMD EPIC</strong>
+                      </div>
+                      <div class="calculator-fact">
+                        <span>Famille</span>
+                        <strong>Zen 2</strong>
+                      </div>
+                      <div class="calculator-fact">
+                        <span>vCPU par CPU</span>
+                        <strong>32</strong>
+                      </div>
+                    </div>
+                    <div class="calculator-action-row">
+                      <label class="calculator-field" for="cpu-physical-input">
+                        <span class="calculator-input-label"
+                          >Nombre de CPU physiques</span
+                        >
+                        <input
+                          id="cpu-physical-input"
+                          class="calculator-input"
+                          type="number"
+                          name="Réponse pour Nombre de CPU Physique"
+                          value="0"
+                          min="0"
+                          step="1"
+                          placeholder="Ex: 128"
+                        />
+                      </label>
+                      <div class="calculator-inline-result">
+                        <span class="calculator-output-label"
+                          >Empreinte CPU</span
+                        >
+                        <strong id="cpu-footprint-result">0</strong>
+                        <span class="calculator-output-unit">kg CO2eq</span>
+                      </div>
+                    </div>
+                  </section>
+
+                  <section class="calculator-strip">
+                    <div class="calculator-strip-head">
+                      <span class="calculator-strip-index">B</span>
+                      <div>
+                        <h4>Paramétrage RAM</h4>
+                        <p>
+                          Le nombre de barrettes est dérivé automatiquement.
+                        </p>
+                      </div>
+                    </div>
+                    <div class="calculator-facts">
+                      <div class="calculator-fact">
+                        <span>Type / Modèle</span>
+                        <strong>Samsung</strong>
+                      </div>
+                      <div class="calculator-fact">
+                        <span>Go / module</span>
+                        <strong id="ram-go-per-module">128</strong>
+                      </div>
+                      <div class="calculator-fact">
+                        <span>Barrettes estimées</span>
+                        <strong id="ram-barette-output">0</strong>
+                      </div>
+                    </div>
+                    <div class="calculator-action-row">
+                      <label class="calculator-field" for="ram-input">
+                        <span class="calculator-input-label"
+                          >Quantité de RAM (Go)</span
+                        >
+                        <input
+                          id="ram-input"
+                          class="calculator-input"
+                          type="number"
+                          name="Réponse pour Nombre de CPU Physique"
+                          value="0"
+                          min="0"
+                          step="1"
+                          placeholder="Ex: 128"
+                        />
+                      </label>
+                      <div class="calculator-inline-result">
+                        <span class="calculator-output-label"
+                          >Empreinte RAM</span
+                        >
+                        <strong id="ram-footprint-result">0</strong>
+                        <span class="calculator-output-unit">kg CO2eq</span>
+                      </div>
+                    </div>
+                  </section>
+
+                  <section class="calculator-strip calculator-strip-gpu">
+                    <div class="calculator-strip-head">
+                      <span class="calculator-strip-index">C</span>
+                      <div>
+                        <h4>Paramétrage GPU</h4>
+                        <p>
+                          Sélectionnez jusqu’à deux familles de GPU et ajustez
+                          le nombre de cartes pour chaque ligne.
+                        </p>
+                      </div>
+                    </div>
+
+                    <div class="calculator-matrix">
+                      <div class="calculator-matrix-header">
+                        <span>Famille GPU</span>
+                        <span>Nombre</span>
+                        <span>Critère</span>
+                        <span>Empreinte</span>
+                      </div>
+
+                      <div class="calculator-matrix-row">
+                        <label
+                          class="calculator-inline-input"
+                          for="gpu-family-1"
+                        >
+                          <select
+                            id="gpu-family-1"
+                            class="calculator-input calculator-select"
+                          >
+                            <option value="A100">A100</option>
+                            <option value="H100">H100</option>
+                            <option value="Tesla V100">Tesla V100</option>
+                          </select>
+                        </label>
+                        <label class="calculator-inline-input" for="gpu-nb-1">
+                          <input
+                            id="gpu-nb-1"
+                            class="calculator-input"
+                            type="number"
+                            name="Réponse pour Nombre de GPU 1"
+                            value="0"
+                            min="0"
+                            step="1"
+                            placeholder="Ex: 4"
+                          />
+                        </label>
+                        <span id="gpu-criterion-1">0</span>
+                        <span id="gpu-footprint-result-1">0</span>
+                      </div>
+
+                      <div class="calculator-matrix-row">
+                        <label
+                          class="calculator-inline-input"
+                          for="gpu-family-2"
+                        >
+                          <select
+                            id="gpu-family-2"
+                            class="calculator-input calculator-select"
+                          >
+                            <option value="A100">A100</option>
+                            <option value="H100">H100</option>
+                            <option value="Tesla V100">Tesla V100</option>
+                          </select>
+                        </label>
+                        <label class="calculator-inline-input" for="gpu-nb-2">
+                          <input
+                            id="gpu-nb-2"
+                            class="calculator-input"
+                            type="number"
+                            name="Réponse pour Nombre de GPU 2"
+                            value="0"
+                            min="0"
+                            step="1"
+                            placeholder="Ex: 4"
+                          />
+                        </label>
+                        <span id="gpu-criterion-2">0</span>
+                        <span id="gpu-footprint-result-2">0</span>
+                      </div>
+
+                      <div class="calculator-matrix-total">
+                        <span>Total GPU</span>
+                        <strong id="gpu-footprint-result">0</strong>
+                        <span>kg CO2eq</span>
+                      </div>
+                    </div>
+                  </section>
+
+                  <section class="calculator-strip">
+                    <div class="calculator-strip-head">
+                      <span class="calculator-strip-index">D</span>
+                      <div>
+                        <h4>Paramétrage SSD</h4>
+                        <p>
+                          Le nombre de SSD est dérivé automatiquement à partir
+                          du volume total de stockage saisi.
+                        </p>
+                      </div>
+                    </div>
+                    <div class="calculator-facts">
+                      <div class="calculator-fact">
+                        <span>Type / Modèle</span>
+                        <strong>Stockage</strong>
+                      </div>
+                      <div class="calculator-fact">
+                        <span>Go / SSD</span>
+                        <strong>2000</strong>
+                      </div>
+                      <div class="calculator-fact">
+                        <span>Nombre de SSD estimé</span>
+                        <strong id="ssd-nb">0</strong>
+                      </div>
+                    </div>
+                    <div class="calculator-action-row">
+                      <label class="calculator-field" for="ssd-go-input">
+                        <span class="calculator-input-label"
+                          >Quantité de stockage (Go)</span
+                        >
+                        <input
+                          id="ssd-go-input"
+                          class="calculator-input"
+                          type="number"
+                          name="Réponse quantité de Go de Stockage"
+                          value="0"
+                          min="0"
+                          step="1"
+                          placeholder="Ex: 4000"
+                        />
+                      </label>
+                      <div class="calculator-inline-result">
+                        <span class="calculator-output-label"
+                          >Empreinte SSD</span
+                        >
+                        <strong id="ssd-footprint-result">0</strong>
+                        <span class="calculator-output-unit">kg CO2eq</span>
+                      </div>
+                    </div>
+                  </section>
+
+                  <section class="calculator-strip calculator-strip-components">
+                    <div class="calculator-strip-head">
+                      <span class="calculator-strip-index">E</span>
+                      <div>
+                        <h4>Paramétrage des autres composants</h4>
+                        <p>
+                          Le total ci-dessous inclut les composants fixes et le
+                          nombre de HDD ajustable.
+                        </p>
+                      </div>
+                    </div>
+
+                    <div class="calculator-ledger">
+                      <div class="calculator-ledger-header">
+                        <span>Composant</span>
+                        <span>Nombre</span>
+                        <span>Critère</span>
+                        <span>Empreinte</span>
+                      </div>
+
+                      <div class="calculator-ledger-row">
+                        <strong>Power Supply Unit</strong>
+                        <span>2</span>
+                        <span>24,30</span>
+                        <span>97,2</span>
+                      </div>
+
+                      <div
+                        class="calculator-ledger-row calculator-ledger-row-input"
+                      >
+                        <strong>HDD</strong>
+                        <label
+                          class="calculator-inline-input"
+                          for="autres-hdd-input"
+                        >
+                          <input
+                            id="autres-hdd-input"
+                            class="calculator-input"
+                            type="number"
+                            min="0"
+                            step="1"
+                            value=""
+                            placeholder="0"
+                          />
+                        </label>
+                        <span>31,10</span>
+                        <span id="autres-hdd-footprint">0</span>
+                      </div>
+
+                      <div class="calculator-ledger-row">
+                        <strong>Motherboard</strong>
+                        <span>1</span>
+                        <span>66,10</span>
+                        <span>66,1</span>
+                      </div>
+
+                      <div class="calculator-ledger-row">
+                        <strong>Rack Server</strong>
+                        <span>1</span>
+                        <span>150,00</span>
+                        <span>150,0</span>
+                      </div>
+
+                      <div class="calculator-ledger-row">
+                        <strong>Blade Enclosure</strong>
+                        <span>0</span>
+                        <span>880,00</span>
+                        <span>0,0</span>
+                      </div>
+
+                      <div class="calculator-ledger-row">
+                        <strong>Blade Server</strong>
+                        <span>0</span>
+                        <span>30,90</span>
+                        <span>0,0</span>
+                      </div>
+
+                      <div class="calculator-ledger-row">
+                        <strong>Interface card</strong>
+                        <span>1</span>
+                        <span>33,05</span>
+                        <span>33,1</span>
+                      </div>
+
+                      <div class="calculator-ledger-row">
+                        <strong>Server Assembly</strong>
+                        <span>1</span>
+                        <span>6,68</span>
+                        <span>6,7</span>
+                      </div>
+
+                      <div class="calculator-ledger-total">
+                        <span>Total autres composants</span>
+                        <strong id="autres-total-footprint">0</strong>
+                        <span>kg CO2eq</span>
+                      </div>
+                    </div>
+                  </section>
                 </div>
 
-                <section class="calculator-strip">
-                  <div class="calculator-strip-head">
-                    <span class="calculator-strip-index">A</span>
-                    <div>
-                      <h4>Paramétrage CPU</h4>
-                      <p>Socle matériel processeur utilisé pour le calcul.</p>
-                    </div>
-                  </div>
-                  <div class="calculator-facts">
-                    <div class="calculator-fact">
-                      <span>Type / Modèle</span>
-                      <strong>AMD EPIC</strong>
-                    </div>
-                    <div class="calculator-fact">
-                      <span>Famille</span>
-                      <strong>Zen 2</strong>
-                    </div>
-                    <div class="calculator-fact">
-                      <span>vCPU par CPU</span>
-                      <strong>32</strong>
-                    </div>
-                  </div>
-                  <div class="calculator-action-row">
-                    <label class="calculator-field" for="cpu-physical-input">
-                      <span class="calculator-input-label"
-                        >Nombre de CPU physiques</span
-                      >
-                      <input
-                        id="cpu-physical-input"
-                        class="calculator-input"
-                        type="number"
-                        name="Réponse pour Nombre de CPU Physique"
-                        value="0"
-                        min="0"
-                        step="1"
-                        placeholder="Ex: 128"
-                      />
-                    </label>
-                    <div class="calculator-inline-result">
-                      <span class="calculator-output-label">Empreinte CPU</span>
-                      <strong id="cpu-footprint-result">0</strong>
-                      <span class="calculator-output-unit">kg CO2eq</span>
-                    </div>
-                  </div>
-                </section>
-
-                <section class="calculator-strip">
-                  <div class="calculator-strip-head">
-                    <span class="calculator-strip-index">B</span>
-                    <div>
-                      <h4>Paramétrage RAM</h4>
-                      <p>Le nombre de barrettes est dérivé automatiquement.</p>
-                    </div>
-                  </div>
-                  <div class="calculator-facts">
-                    <div class="calculator-fact">
-                      <span>Type / Modèle</span>
-                      <strong>Samsung</strong>
-                    </div>
-                    <div class="calculator-fact">
-                      <span>Go / module</span>
-                      <strong id="ram-go-per-module">128</strong>
-                    </div>
-                    <div class="calculator-fact">
-                      <span>Barrettes estimées</span>
-                      <strong id="ram-barette-output">0</strong>
-                    </div>
-                  </div>
-                  <div class="calculator-action-row">
-                    <label class="calculator-field" for="ram-input">
-                      <span class="calculator-input-label"
-                        >Quantité de RAM (Go)</span
-                      >
-                      <input
-                        id="ram-input"
-                        class="calculator-input"
-                        type="number"
-                        name="Réponse pour Nombre de CPU Physique"
-                        value="0"
-                        min="0"
-                        step="1"
-                        placeholder="Ex: 128"
-                      />
-                    </label>
-                    <div class="calculator-inline-result">
-                      <span class="calculator-output-label">Empreinte RAM</span>
-                      <strong id="ram-footprint-result">0</strong>
-                      <span class="calculator-output-unit">kg CO2eq</span>
-                    </div>
-                  </div>
-                </section>
-
-                <section class="calculator-strip calculator-strip-gpu">
-                  <div class="calculator-strip-head">
-                    <span class="calculator-strip-index">C</span>
-                    <div>
-                      <h4>Paramétrage GPU</h4>
-                      <p>
-                        Sélectionnez jusqu’à deux familles de GPU et ajustez le
-                        nombre de cartes pour chaque ligne.
-                      </p>
-                    </div>
-                  </div>
-
-                  <div class="calculator-matrix">
-                    <div class="calculator-matrix-header">
-                      <span>Famille GPU</span>
-                      <span>Nombre</span>
-                      <span>Critère</span>
-                      <span>Empreinte</span>
-                    </div>
-
-                    <div class="calculator-matrix-row">
-                      <label class="calculator-inline-input" for="gpu-family-1">
-                        <select
-                          id="gpu-family-1"
-                          class="calculator-input calculator-select"
-                        >
-                          <option value="A100">A100</option>
-                          <option value="H100">H100</option>
-                          <option value="Tesla V100">Tesla V100</option>
-                        </select>
-                      </label>
-                      <label class="calculator-inline-input" for="gpu-nb-1">
-                        <input
-                          id="gpu-nb-1"
-                          class="calculator-input"
-                          type="number"
-                          name="Réponse pour Nombre de GPU 1"
-                          value="0"
-                          min="0"
-                          step="1"
-                          placeholder="Ex: 4"
-                        />
-                      </label>
-                      <span id="gpu-criterion-1">0</span>
-                      <span id="gpu-footprint-result-1">0</span>
-                    </div>
-
-                    <div class="calculator-matrix-row">
-                      <label class="calculator-inline-input" for="gpu-family-2">
-                        <select
-                          id="gpu-family-2"
-                          class="calculator-input calculator-select"
-                        >
-                          <option value="A100">A100</option>
-                          <option value="H100">H100</option>
-                          <option value="Tesla V100">Tesla V100</option>
-                        </select>
-                      </label>
-                      <label class="calculator-inline-input" for="gpu-nb-2">
-                        <input
-                          id="gpu-nb-2"
-                          class="calculator-input"
-                          type="number"
-                          name="Réponse pour Nombre de GPU 2"
-                          value="0"
-                          min="0"
-                          step="1"
-                          placeholder="Ex: 4"
-                        />
-                      </label>
-                      <span id="gpu-criterion-2">0</span>
-                      <span id="gpu-footprint-result-2">0</span>
-                    </div>
-
-                    <div class="calculator-matrix-total">
-                      <span>Total GPU</span>
-                      <strong id="gpu-footprint-result">0</strong>
-                      <span>kg CO2eq</span>
-                    </div>
-                  </div>
-                </section>
-
-                <section class="calculator-strip">
-                  <div class="calculator-strip-head">
-                    <span class="calculator-strip-index">D</span>
-                    <div>
-                      <h4>Paramétrage SSD</h4>
-                      <p>
-                        Le nombre de SSD est dérivé automatiquement à partir du
-                        volume total de stockage saisi.
-                      </p>
-                    </div>
-                  </div>
-                  <div class="calculator-facts">
-                    <div class="calculator-fact">
-                      <span>Type / Modèle</span>
-                      <strong>Stockage</strong>
-                    </div>
-                    <div class="calculator-fact">
-                      <span>Go / SSD</span>
-                      <strong>2000</strong>
-                    </div>
-                    <div class="calculator-fact">
-                      <span>Nombre de SSD estimé</span>
-                      <strong id="ssd-nb">0</strong>
-                    </div>
-                  </div>
-                  <div class="calculator-action-row">
-                    <label class="calculator-field" for="ssd-go-input">
-                      <span class="calculator-input-label"
-                        >Quantité de stockage (Go)</span
-                      >
-                      <input
-                        id="ssd-go-input"
-                        class="calculator-input"
-                        type="number"
-                        name="Réponse quantité de Go de Stockage"
-                        value="0"
-                        min="0"
-                        step="1"
-                        placeholder="Ex: 4000"
-                      />
-                    </label>
-                    <div class="calculator-inline-result">
-                      <span class="calculator-output-label">Empreinte SSD</span>
-                      <strong id="ssd-footprint-result">0</strong>
-                      <span class="calculator-output-unit">kg CO2eq</span>
-                    </div>
-                  </div>
-                </section>
-
-                <section class="calculator-strip calculator-strip-components">
-                  <div class="calculator-strip-head">
-                    <span class="calculator-strip-index">E</span>
-                    <div>
-                      <h4>Paramétrage des autres composants</h4>
-                      <p>
-                        Le total ci-dessous inclut les composants fixes et le
-                        nombre de HDD ajustable.
-                      </p>
-                    </div>
-                  </div>
-
-                  <div class="calculator-ledger">
-                    <div class="calculator-ledger-header">
-                      <span>Composant</span>
-                      <span>Nombre</span>
-                      <span>Critère</span>
-                      <span>Empreinte</span>
-                    </div>
-
-                    <div class="calculator-ledger-row">
-                      <strong>Power Supply Unit</strong>
-                      <span>2</span>
-                      <span>24,30</span>
-                      <span>97,2</span>
-                    </div>
-
-                    <div
-                      class="calculator-ledger-row calculator-ledger-row-input"
-                    >
-                      <strong>HDD</strong>
-                      <label
-                        class="calculator-inline-input"
-                        for="autres-hdd-input"
-                      >
-                        <input
-                          id="autres-hdd-input"
-                          class="calculator-input"
-                          type="number"
-                          min="0"
-                          step="1"
-                          value=""
-                          placeholder="0"
-                        />
-                      </label>
-                      <span>31,10</span>
-                      <span id="autres-hdd-footprint">0</span>
-                    </div>
-
-                    <div class="calculator-ledger-row">
-                      <strong>Motherboard</strong>
-                      <span>1</span>
-                      <span>66,10</span>
-                      <span>66,1</span>
-                    </div>
-
-                    <div class="calculator-ledger-row">
-                      <strong>Rack Server</strong>
-                      <span>1</span>
-                      <span>150,00</span>
-                      <span>150,0</span>
-                    </div>
-
-                    <div class="calculator-ledger-row">
-                      <strong>Blade Enclosure</strong>
-                      <span>0</span>
-                      <span>880,00</span>
-                      <span>0,0</span>
-                    </div>
-
-                    <div class="calculator-ledger-row">
-                      <strong>Blade Server</strong>
-                      <span>0</span>
-                      <span>30,90</span>
-                      <span>0,0</span>
-                    </div>
-
-                    <div class="calculator-ledger-row">
-                      <strong>Interface card</strong>
-                      <span>1</span>
-                      <span>33,05</span>
-                      <span>33,1</span>
-                    </div>
-
-                    <div class="calculator-ledger-row">
-                      <strong>Server Assembly</strong>
-                      <span>1</span>
-                      <span>6,68</span>
-                      <span>6,7</span>
-                    </div>
-
-                    <div class="calculator-ledger-total">
-                      <span>Total autres composants</span>
-                      <strong id="autres-total-footprint">0</strong>
-                      <span>kg CO2eq</span>
-                    </div>
-                  </div>
-                </section>
+                <aside class="calculator-summary" aria-live="polite">
+                  <span class="calculator-summary-label">Résultat final</span>
+                  <strong
+                    id="global-total-divided"
+                    class="calculator-summary-value"
+                    >0</strong
+                  >
+                  <span class="calculator-summary-unit"
+                    >kg CO2eq / serveur</span
+                  >
+                  <p class="calculator-summary-note">
+                    Total pour la fabrication <br />(kg CO2eq) / serveur
+                  </p>
+                </aside>
               </div>
-
-              <aside class="calculator-summary" aria-live="polite">
-                <span class="calculator-summary-label">Synthèse atelier</span>
-                <strong id="global-total-divided" class="calculator-summary-value"
-                  >0</strong
-                >
-                <span class="calculator-summary-unit">kg CO2eq / serveur</span>
-                <p class="calculator-summary-note">
-                  Total pour la fabrication <br>(kg CO2eq) / serveur
-                </p>
-              </aside>
-            </div>
-          </article>
+            </article>
+          </div>
         </div>
       </section>
 
