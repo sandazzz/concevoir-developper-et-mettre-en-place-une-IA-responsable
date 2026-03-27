@@ -2125,9 +2125,7 @@
 
           <article class="content-block practical-case">
             <h3>Calculatrice :</h3>
-            <h4>
-              Parametrage des CPU :
-            </h4>
+            <h4>Parametrage des CPU :</h4>
             <div class="table-responsive">
               <table>
                 <tr>
@@ -2171,9 +2169,7 @@
                 </tr>
               </table>
             </div>
-            <h4>
-              Parametrage de la RAM : 
-            </h4>
+            <h4>Parametrage de la RAM :</h4>
             <div class="table-responsive">
               <table>
                 <tr>
@@ -2217,7 +2213,135 @@
                 </tr>
               </table>
             </div>
-
+            <h4>Paramétrage des GPU :</h4>
+            <div class="table-responsive">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Famille de GPU</th>
+                    <th>Nombre de GPUs</th>
+                    <th>Critère GPU (kgCO2eq)</th>
+                    <th>Empreinte (kgCO2eq)</th>
+                  </tr>
+                </thead>
+                <tr>
+                  <td>
+                    <select type="text" name="" id="gpu-family-1">
+                      <option value="A100">A100</option>
+                      <option value="H100">H100</option>
+                      <option value="Tesla V100">Tesla V100</option>
+                    </select>
+                  </td>
+                  <td>
+                    <input
+                      id="gpu-nb-1"
+                      type="number"
+                      name="Réponse pour Nombre de GPU 1"
+                      value="0"
+                      min="0"
+                      step="1"
+                      placeholder="Ex: 4"
+                      style="
+                        width: 100%;
+                        padding: var(--spacing-sm) var(--spacing-md);
+                        border: 1px solid var(--color-primary);
+                        border-radius: var(--border-radius-md);
+                        background-color: var(--color-white);
+                        color: var(--color-gray-800);
+                        font-size: var(--font-size-sm);
+                      "
+                    />
+                  </td>
+                  <td>
+                    <span id="gpu-criterion-1"></span>
+                  </td>
+                  <td id="gpu-footprint-result-1"></td>
+                </tr>
+                <tr>
+                  <td>
+                    <select type="text" name="" id="gpu-family-2">
+                      <option value="A100">A100</option>
+                      <option value="H100">H100</option>
+                      <option value="Tesla V100">Tesla V100</option>
+                    </select>
+                  </td>
+                  <td>
+                    <input
+                      id="gpu-nb-2"
+                      type="number"
+                      name="Réponse pour Nombre de GPU 2"
+                      value="0"
+                      min="0"
+                      step="1"
+                      placeholder="Ex: 4"
+                      style="
+                        width: 100%;
+                        padding: var(--spacing-sm) var(--spacing-md);
+                        border: 1px solid var(--color-primary);
+                        border-radius: var(--border-radius-md);
+                        background-color: var(--color-white);
+                        color: var(--color-gray-800);
+                        font-size: var(--font-size-sm);
+                      "
+                    />
+                  </td>
+                  <td>
+                    <span id="gpu-criterion-2"></span>
+                  </td>
+                  <td id="gpu-footprint-result-2"></td>
+                </tr>
+                <tr>
+                  <td><strong>Total Empreinte GPU (kgCO2eq)</strong></td>
+                  <td></td>
+                  <td></td>
+                  <td id="gpu-footprint-result"></td>
+                </tr>
+              </table>
+            </div>
+            <h4>Total SSD</h4>
+            <div class="table-responsive">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Type/Modèle</th>
+                    <th>Quantité de Go de Stockage</th>
+                    <th>Nombre SSDs</th>
+                    <th>Go/SSD</th>
+                  </tr>
+                  <tr>
+                    <td>Stockage</td>
+                    <td>
+                      <input
+                        type="number"
+                        id="ssd-go-input"
+                        name="Réponse quantité de Go de Stockage"
+                        value="0"
+                        min="0"
+                        step="1"
+                        placeholder="Ex: 4"
+                        style="
+                          width: 100%;
+                          padding: var(--spacing-sm) var(--spacing-md);
+                          border: 1px solid var(--color-primary);
+                          border-radius: var(--border-radius-md);
+                          background-color: var(--color-white);
+                          color: var(--color-gray-800);
+                          font-size: var(--font-size-sm);
+                        "
+                      />
+                    </td>
+                    <td id="ssd-nb">0</td>
+                    <td>2000</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Total Empreinte SSD (kgCO2eq)</strong></td>
+                    <td></td>
+                    <td></td>
+                    <td id="ssd-footprint-result"></td>
+                  </tr>
+                </thead>
+              </table>
+            </div>
             <h4>Paramétrage des autres composants :</h4>
             <div class="table-responsive">
               <table>
