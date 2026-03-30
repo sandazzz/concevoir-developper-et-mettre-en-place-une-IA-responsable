@@ -14,13 +14,13 @@ const cpuStrip = createStrip({
   facts: [
     { label: "Type / Modèle", value: "AMD EPIC" },
     { label: "Famille", value: "Zen 2" },
-    { label: "vCPU par CPU", value: "32" }
+    { label: "vCPU par CPU", value: "32" },
   ],
   inputConfig: {
     label: "Nombre de CPU physiques",
     resultLabel: "Empreinte CPU",
-    defaultValue: 0
-  }
+    defaultValue: 0,
+  },
 });
 
 const ramStrip = createStrip({
@@ -29,33 +29,48 @@ const ramStrip = createStrip({
   description: "Le nombre de barrettes est dérivé automatiquement.",
   facts: [
     { label: "Type / Modèle", value: "Samsung" },
-    { label: "Go / module", value: "128" }
+    { label: "Go / module", value: "128" },
   ],
   inputConfig: {
     label: "Quantité de RAM (Go)",
-    resultLabel: "Empreinte RAM"
-  }
+    resultLabel: "Empreinte RAM",
+  },
 });
 
 const ssdStrip = createStrip({
-    index: "D",
-    title: "Paramétrage SSD",
-    description:
-      "Le nombre de SSD est dérivé automatiquement à partir du volume total de stockage saisi.",
-    facts: [
-      { label: "Type / Modèle", value: "Stockage" },
-      { label: "Go / SSD", value: "2000" },
-      { label: "Nombre de SSD estimé", value: "0" }
-    ],
-    inputConfig: {
-      label: "Quantité de stockage (Go)",
-      resultLabel: "Empreinte SSD",
-      defaultValue: 0,
-      onChange: (value) => {
-        const footprint = value * 0.02; // exemple
-        return footprint.toFixed(2);
-      }
-    }
-  });
+  index: "D",
+  title: "Paramétrage SSD",
+  description:
+    "Le nombre de SSD est dérivé automatiquement à partir du volume total de stockage saisi.",
+  facts: [
+    { label: "Type / Modèle", value: "Stockage" },
+    { label: "Go / SSD", value: "2000" },
+    { label: "Nombre de SSD estimé", value: "0" },
+  ],
+  inputConfig: {
+    label: "Quantité de stockage (Go)",
+    resultLabel: "Empreinte SSD",
+    defaultValue: 0,
+    onChange: (value) => {
+      const footprint = value * 0.02; // exemple
+      return footprint.toFixed(2);
+    },
+  },
+});
 
-app.append(div, cpuStrip, ramStrip, ssdStrip);
+const btn = createElement(
+  "button",
+  {
+    className: "btn",
+    text: "0",
+  },
+  {
+    click: () => {
+      const currentValue = parseInt(btn.textContent, 10);
+      btn.textContent = currentValue + 1;
+    },
+    mouseenter: () => console.log("hover"),
+  },
+);
+
+app.append(btn, cpuStrip, ramStrip, ssdStrip, div);

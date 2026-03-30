@@ -1,4 +1,4 @@
-export function createElement(tag, options = {}) {
+export function createElement(tag, options = {}, on) {
   const el = document.createElement(tag);
 
   if (options.className) el.className = options.className;
@@ -11,15 +11,29 @@ export function createElement(tag, options = {}) {
   }
 
   if (options.children) {
-    options.children.forEach(child => {
+    options.children.forEach((child) => {
       if (child) el.appendChild(child);
     });
   }
 
+  if (on) {
+    console.log("EVENTS DETECTED", on);
+
+    Object.entries(on).forEach(([event, handler]) => {
+      el.addEventListener(event, handler);
+      console.log(`Event listener added: ${event}`);
+    });
+  }
   return el;
 }
 
-export function createStrip({ index, title, description, facts = [], inputConfig }) {
+export function createStrip({
+  index,
+  title,
+  description,
+  facts = [],
+  inputConfig,
+}) {
   return createElement("section", {
     className: "calculator-strip",
     children: [
@@ -29,29 +43,29 @@ export function createStrip({ index, title, description, facts = [], inputConfig
         children: [
           createElement("span", {
             className: "calculator-strip-index",
-            text: index
+            text: index,
           }),
           createElement("div", {
             children: [
               createElement("h4", { text: title }),
-              createElement("p", { text: description })
-            ]
-          })
-        ]
+              createElement("p", { text: description }),
+            ],
+          }),
+        ],
       }),
 
       // FACTS
       createElement("div", {
         className: "calculator-facts",
-        children: facts.map(fact =>
+        children: facts.map((fact) =>
           createElement("div", {
             className: "calculator-fact",
             children: [
               createElement("span", { text: fact.label }),
-              createElement("strong", { text: fact.value })
-            ]
-          })
-        )
+              createElement("strong", { text: fact.value }),
+            ],
+          }),
+        ),
       }),
 
       // INPUT + RESULT
@@ -63,17 +77,17 @@ export function createStrip({ index, title, description, facts = [], inputConfig
             children: [
               createElement("span", {
                 className: "calculator-input-label",
-                text: inputConfig.label
+                text: inputConfig.label,
               }),
               createElement("input", {
                 className: "calculator-input",
                 attrs: {
                   type: "number",
                   value: inputConfig.defaultValue || 0,
-                  min: 0
-                }
-              })
-            ]
+                  min: 0,
+                },
+              }),
+            ],
           }),
 
           createElement("div", {
@@ -81,19 +95,19 @@ export function createStrip({ index, title, description, facts = [], inputConfig
             children: [
               createElement("span", {
                 className: "calculator-output-label",
-                text: inputConfig.resultLabel
+                text: inputConfig.resultLabel,
               }),
               createElement("strong", {
-                text: "0"
+                text: "0",
               }),
               createElement("span", {
                 className: "calculator-output-unit",
-                text: "kg CO2eq"
-              })
-            ]
-          })
-        ]
-      })
-    ]
+                text: "kg CO2eq",
+              }),
+            ],
+          }),
+        ],
+      }),
+    ],
   });
-}
+} 
