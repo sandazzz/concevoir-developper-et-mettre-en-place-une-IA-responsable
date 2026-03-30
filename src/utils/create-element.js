@@ -33,9 +33,10 @@ export function createStrip({
   description,
   facts = [],
   inputConfig,
+  className = "calculator-strip",
 }) {
   return createElement("section", {
-    className: "calculator-strip",
+    className,
     children: [
       // HEADER
       createElement("div", {
@@ -59,10 +60,13 @@ export function createStrip({
         className: "calculator-facts",
         children: facts.map((fact) =>
           createElement("div", {
-            className: "calculator-fact",
+            className: fact.className || "calculator-fact",
             children: [
               createElement("span", { text: fact.label }),
-              createElement("strong", { text: fact.value }),
+              createElement("strong", {
+                text: fact.value,
+                attrs: fact.valueAttrs,
+              }),
             ],
           }),
         ),
@@ -74,6 +78,7 @@ export function createStrip({
         children: [
           createElement("label", {
             className: "calculator-field",
+            attrs: inputConfig.labelAttrs,
             children: [
               createElement("span", {
                 className: "calculator-input-label",
@@ -83,8 +88,9 @@ export function createStrip({
                 className: "calculator-input",
                 attrs: {
                   type: "number",
-                  value: inputConfig.defaultValue || 0,
+                  value: inputConfig.defaultValue ?? 0,
                   min: 0,
+                  ...inputConfig.inputAttrs,
                 },
               }),
             ],
@@ -99,10 +105,11 @@ export function createStrip({
               }),
               createElement("strong", {
                 text: "0",
+                attrs: inputConfig.resultAttrs,
               }),
               createElement("span", {
                 className: "calculator-output-unit",
-                text: "kg CO2eq",
+                text: inputConfig.unit || "kg CO2eq",
               }),
             ],
           }),
