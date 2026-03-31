@@ -1,76 +1,39 @@
-import { createElement, createStrip } from "./src/utils/create-element.js";
+import { createElement } from "./src/utils/create-element.js";
+import { calculatorHeader } from "./src/features/footprint/components/calculator-header.js";
+import { calculatorSummary } from "./src/features/footprint/components/calculator-summary.js";
+import { ramParameter } from "./src/features/footprint/components/ram-parameter.js";
+import { cpuParameter } from "./src/features/footprint/components/cpu-parameter.js";
+import { gpuParameter } from "./src/features/footprint/components/gpu-parameter.js";
+import { ssdParameter } from "./src/features/footprint/components/ssd-parameter.js";
+import { otherParameter } from "./src/features/footprint/components/other-parameter.js";
+import Footprint from "./src/features/footprint/footprint.js";
 
 const app = document.getElementById("app");
 
-const div = createElement("div", {
-  className: "container",
-  text: "Hello World",
-});
+const createCalculator = () =>
+  createElement("article", {
+    className: "content-block practical-case calculator-studio",
+    children: [
+      createElement("div", {
+        className: "calculator-studio-shell",
+        children: [
+          createElement("div", {
+            className: "calculator-studio-main",
+            children: [
+              calculatorHeader(),
+              cpuParameter(),
+              ramParameter(),
+              gpuParameter(),
+              ssdParameter(),
+              otherParameter(),
+            ],
+          }),
+          calculatorSummary(),
+        ],
+      }),
+    ],
+  });
 
-const cpuStrip = createStrip({
-  index: "A",
-  title: "Paramétrage CPU",
-  description: "Socle matériel processeur utilisé pour le calcul.",
-  facts: [
-    { label: "Type / Modèle", value: "AMD EPIC" },
-    { label: "Famille", value: "Zen 2" },
-    { label: "vCPU par CPU", value: "32" },
-  ],
-  inputConfig: {
-    label: "Nombre de CPU physiques",
-    resultLabel: "Empreinte CPU",
-    defaultValue: 0,
-  },
-});
-
-const ramStrip = createStrip({
-  index: "B",
-  title: "Paramétrage RAM",
-  description: "Le nombre de barrettes est dérivé automatiquement.",
-  facts: [
-    { label: "Type / Modèle", value: "Samsung" },
-    { label: "Go / module", value: "128" },
-  ],
-  inputConfig: {
-    label: "Quantité de RAM (Go)",
-    resultLabel: "Empreinte RAM",
-  },
-});
-
-const ssdStrip = createStrip({
-  index: "D",
-  title: "Paramétrage SSD",
-  description:
-    "Le nombre de SSD est dérivé automatiquement à partir du volume total de stockage saisi.",
-  facts: [
-    { label: "Type / Modèle", value: "Stockage" },
-    { label: "Go / SSD", value: "2000" },
-    { label: "Nombre de SSD estimé", value: "0" },
-  ],
-  inputConfig: {
-    label: "Quantité de stockage (Go)",
-    resultLabel: "Empreinte SSD",
-    defaultValue: 0,
-    onChange: (value) => {
-      const footprint = value * 0.02; // exemple
-      return footprint.toFixed(2);
-    },
-  },
-});
-
-const btn = createElement(
-  "button",
-  {
-    className: "btn",
-    text: "0",
-  },
-  {
-    click: () => {
-      const currentValue = parseInt(btn.textContent, 10);
-      btn.textContent = currentValue + 1;
-    },
-    mouseenter: () => console.log("hover"),
-  },
-);
-
-app.append(btn, cpuStrip, ramStrip, ssdStrip, div);
+if (app) {
+  app.appendChild(createCalculator());
+}
