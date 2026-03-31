@@ -1,0 +1,35 @@
+import { createElement } from "../../../utils/create-element.js";
+
+export function calculatorSummary() {
+  return createElement("aside", {
+    className: "calculator-summary",
+    attrs: { "aria-live": "polite" },
+    children: [
+      createElement("span", {
+        className: "calculator-summary-label",
+        text: "Synthese atelier",
+      }),
+      createElement("strong", {
+        className: "calculator-summary-value",
+        text: "0",
+        attrs: { id: "global-total-divided" },
+      }),
+      createElement("span", {
+        className: "calculator-summary-unit",
+        text: "kg CO2eq / serveur",
+      }),
+      createElement("p", {
+        className: "calculator-summary-note",
+        children: [
+          createElement("span", {
+            text: "Total pour la fabrication",
+          }),
+          createElement("br"),
+          createElement("span", {
+            text: "(kg CO2eq) / serveur",
+          }),
+        ],
+      }),
+    ],
+  });
+}
