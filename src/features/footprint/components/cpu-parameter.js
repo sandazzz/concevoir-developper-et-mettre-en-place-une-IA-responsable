@@ -1,4 +1,5 @@
 import { createStrip } from "../../../utils/create-element.js";
+import { calculEmpreinteCPU } from "../footprint.js";
 
 export function cpuParameter() {
   return createStrip({
@@ -22,6 +23,17 @@ export function cpuParameter() {
       resultLabel: "Empreinte CPU",
       resultAttrs: { id: "cpu-footprint-result" },
       defaultValue: 0,
+    },
+    events: {
+      input: (event) => {
+        const cpuResult = document.getElementById("cpu-footprint-result");
+        const value = Number(event.target.value || 0);
+        const result = calculEmpreinteCPU(value);
+
+        if (cpuResult) {
+          cpuResult.textContent = result;
+        }
+      },
     },
   });
 }

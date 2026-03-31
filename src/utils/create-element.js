@@ -34,6 +34,7 @@ export function createStrip({
   facts = [],
   inputConfig,
   className = "calculator-strip",
+  events,
 }) {
   return createElement("section", {
     className,
@@ -92,7 +93,7 @@ export function createStrip({
                   min: 0,
                   ...inputConfig.inputAttrs,
                 },
-              }),
+              }, events),
             ],
           }),
 
