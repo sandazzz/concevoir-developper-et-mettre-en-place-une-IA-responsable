@@ -10,8 +10,10 @@ import Footprint from "./src/features/footprint/footprint.js";
 
 const app = document.getElementById("app");
 
-const createCalculator = () =>
-  createElement("article", {
+const createCalculator = () => {
+  const idNumber = Math.random().toString(16).slice(2);
+
+  return createElement("article", {
     className: "content-block practical-case calculator-studio",
     children: [
       createElement("div", {
@@ -21,8 +23,8 @@ const createCalculator = () =>
             className: "calculator-studio-main",
             children: [
               calculatorHeader(),
-              cpuParameter(),
-              ramParameter(),
+              cpuParameter(idNumber),
+              ramParameter(idNumber),
               gpuParameter(),
               ssdParameter(),
               otherParameter(),
@@ -33,7 +35,9 @@ const createCalculator = () =>
       }),
     ],
   });
+};
+const idNumber = Math.random().toString(16).slice(2);
 
 if (app) {
-  app.appendChild(createCalculator());
+  app.appendChild(createCalculator(1));
 }
