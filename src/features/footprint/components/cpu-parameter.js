@@ -5,7 +5,6 @@ export function cpuParameter() {
   return createStrip({
     index: "A",
     title: "Parametrage CPU",
-    description: "Socle materiel processeur utilise pour le calcul.",
     facts: [
       { label: "Type / Modele", value: "AMD EPIC" },
       { label: "Famille", value: "Zen 2" },

@@ -7,24 +7,17 @@ export function calculatorSummary() {
     children: [
       createElement("span", {
         className: "calculator-summary-label",
-        text: "Synthese atelier",
+        text: "Total pour la fabrication",
       }),
       createElement("strong", {
         className: "calculator-summary-value",
         text: "0",
         attrs: { id: "global-total-divided" },
       }),
-      createElement("span", {
-        className: "calculator-summary-unit",
-        text: "kg CO2eq / serveur",
-      }),
+
       createElement("p", {
         className: "calculator-summary-note",
         children: [
-          createElement("span", {
-            text: "Total pour la fabrication",
-          }),
-          createElement("br"),
           createElement("span", {
             text: "(kg CO2eq) / serveur",
           }),

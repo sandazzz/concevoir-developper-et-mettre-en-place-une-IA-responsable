@@ -30,7 +30,6 @@ export function createElement(tag, options = {}, on) {
 export function createStrip({
   index,
   title,
-  description,
   facts = [],
   inputConfig,
   className = "calculator-strip",
@@ -50,7 +49,6 @@ export function createStrip({
           createElement("div", {
             children: [
               createElement("h4", { text: title }),
-              createElement("p", { text: description }),
             ],
           }),
         ],

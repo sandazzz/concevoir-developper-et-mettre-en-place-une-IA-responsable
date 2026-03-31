@@ -27,9 +27,6 @@ export function otherParameter() {
               createElement("h4", {
                 text: "Parametrage des autres composants",
               }),
-              createElement("p", {
-                text: "Le total ci-dessous inclut les composants fixes et le nombre de HDD ajustable.",
-              }),
             ],
           }),
         ],

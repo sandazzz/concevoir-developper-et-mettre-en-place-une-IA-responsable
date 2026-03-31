@@ -65,9 +65,6 @@ export function gpuParameter() {
           createElement("div", {
             children: [
               createElement("h4", { text: "Parametrage GPU" }),
-              createElement("p", {
-                text: "Selectionnez jusqu'a deux familles de GPU et ajustez le nombre de cartes pour chaque ligne.",
-              }),
             ],
           }),
         ],

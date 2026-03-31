@@ -4,7 +4,6 @@ export function ramParameter() {
   return createStrip({
     index: "B",
     title: "Parametrage RAM",
-    description: "Le nombre de barrettes est derive automatiquement.",
     facts: [
       { label: "Type / Modele", value: "Samsung" },
       {

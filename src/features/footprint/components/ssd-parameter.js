@@ -4,8 +4,6 @@ export function ssdParameter() {
   return createStrip({
     index: "D",
     title: "Parametrage SSD",
-    description:
-      "Le nombre de SSD est derive automatiquement a partir du volume total de stockage saisi.",
     facts: [
       { label: "Type / Modele", value: "Stockage" },
       { label: "Go / SSD", value: "2000" },
