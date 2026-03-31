@@ -31,5 +31,25 @@ export function ramParameter() {
       resultAttrs: { id: "ram-footprint-result" },
       defaultValue: 0,
     },
+    events: {
+      input: (event) => {
+        const ramGoPerModule = document.getElementById("ram-go-per-module");
+        const barretteOutput = document.getElementById("ram-barette-output");
+        const numberBarrettes = Number(event.target.value) / Number(ramGoPerModule.textContent);
+
+        if (barretteOutput) {
+          barretteOutput.textContent = numberBarrettes;
+        }
+
+        const ramResult = document.getElementById("ram-footprint-result");
+        const value = Number(event.target.value || 0);
+        const result = calculEmpreinteRAM(value);
+
+        if (ramResult) {
+          ramResult.textContent = result;
+        }
+      },
+    },
+
   });
 }
