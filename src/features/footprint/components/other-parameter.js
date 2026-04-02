@@ -13,7 +13,19 @@ const createStaticLedgerRow = ({ label, count, criterion, footprint }) =>
     ],
   });
 
-export function switchAbleInput(isInput, idNumber) {
+export function switchAbleInput(
+  isInput,
+  idNumber,
+  updateTotalParameter = {
+    powerSupplyUnit: 0,
+    motherboard: 0,
+    rackServer: 0,
+    bladeEnclosure: 0,
+    bladeServer: 0,
+    interfaceCard: 0,
+    serverAssembly: 0,
+  },
+) {
   if (!isInput) {
     return createStaticLedgerRow({
       label: "HDD",
@@ -29,7 +41,7 @@ export function switchAbleInput(isInput, idNumber) {
       createElement("strong", { text: "HDD" }),
       createElement("label", {
         className: "calculator-inline-input",
-        attrs: { for: "autres-hdd-input" },
+        attrs: { for: `autres-hdd-input-${idNumber}` },
         children: [
           createElement(
             "input",
@@ -58,8 +70,18 @@ export function switchAbleInput(isInput, idNumber) {
                 if (hddResult) {
                   hddResult.textContent = footprint;
                 }
+                console.log(updateTotalParameter.powerSupplyUnit);
 
-                const totalFootprint = calculEmpreinteAutres({nbHDD: value});
+                const totalFootprint = calculEmpreinteAutres({
+                  nbPowerSupplyUnit: updateTotalParameter.powerSupplyUnit,
+                  nbHDD: value,
+                  nbMotherboard: updateTotalParameter.motherboard,
+                  nbRackServer: updateTotalParameter.rackServer,
+                  nbBladeEnclosure: updateTotalParameter.bladeEnclosure,
+                  nbBladeServer: updateTotalParameter.bladeServer,
+                  nbInterfaceCard: updateTotalParameter.interfaceCard,
+                  nbServerAssembly: updateTotalParameter.serverAssembly,
+                });
 
                 if (totalAutresResult) {
                   totalAutresResult.textContent = totalFootprint;
@@ -79,7 +101,19 @@ export function switchAbleInput(isInput, idNumber) {
   });
 }
 
-export function otherParameter(idNumber) {
+export function otherParameter(
+  idNumber,
+  isInputhdd = false,
+  basicValue = {
+    powerSupplyUnit: 0,
+    motherboard: 0,
+    rackServer: 0,
+    bladeEnclosure: 0,
+    bladeServer: 0,
+    interfaceCard: 0,
+    serverAssembly: 0,
+  },
+) {
   return createElement("section", {
     className: "calculator-strip calculator-strip-components",
     children: [
@@ -113,46 +147,46 @@ export function otherParameter(idNumber) {
           }),
           createStaticLedgerRow({
             label: "Power Supply Unit",
-            count: "2",
+            count: basicValue.powerSupplyUnit,
             criterion: "24,30",
-            footprint: "97,2",
+            footprint: basicValue.powerSupplyUnit * 24.3,
           }),
-          switchAbleInput(false, idNumber),
+          switchAbleInput(isInputhdd, idNumber, basicValue),
           createStaticLedgerRow({
             label: "Motherboard",
-            count: "1",
+            count: basicValue.motherboard,
             criterion: "66,10",
-            footprint: "66,1",
+            footprint: basicValue.motherboard * 66.1,
           }),
           createStaticLedgerRow({
             label: "Rack Server",
-            count: "1",
+            count: basicValue.rackServer,
             criterion: "150,00",
-            footprint: "150,0",
+            footprint: basicValue.rackServer * 150.0,
           }),
           createStaticLedgerRow({
             label: "Blade Enclosure",
-            count: "0",
+            count: basicValue.bladeEnclosure,
             criterion: "880,00",
-            footprint: "0,0",
+            footprint: basicValue.bladeEnclosure * 880.0,
           }),
           createStaticLedgerRow({
             label: "Blade Server",
-            count: "0",
+            count: basicValue.bladeServer,
             criterion: "30,90",
-            footprint: "0,0",
+            footprint: basicValue.bladeServer * 30.9,
           }),
           createStaticLedgerRow({
             label: "Interface card",
-            count: "1",
+            count: basicValue.interfaceCard,
             criterion: "33,05",
-            footprint: "33,1",
+            footprint: basicValue.interfaceCard * 33.1,
           }),
           createStaticLedgerRow({
             label: "Server Assembly",
-            count: "1",
+            count: basicValue.serverAssembly,
             criterion: "6,68",
-            footprint: "6,7",
+            footprint: basicValue.serverAssembly * 6.7,
           }),
           createElement("div", {
             className: "calculator-ledger-total",
@@ -161,7 +195,16 @@ export function otherParameter(idNumber) {
                 text: "Total autres composants",
               }),
               createElement("strong", {
-                text: calculEmpreinteAutres({nbHDD: 0}),
+                text: calculEmpreinteAutres({
+                  nbPowerSupplyUnit: basicValue.powerSupplyUnit,
+                  nbHDD: 0,
+                  nbMotherboard: basicValue.motherboard,
+                  nbRackServer: basicValue.rackServer,
+                  nbBladeEnclosure: basicValue.bladeEnclosure,
+                  nbBladeServer: basicValue.bladeServer,
+                  nbInterfaceCard: basicValue.interfaceCard,
+                  nbServerAssembly: basicValue.serverAssembly,
+                }),
                 attrs: { id: `autres-total-footprint-${idNumber}` },
               }),
               createElement("span", { text: "kg CO2eq" }),

@@ -26,7 +26,15 @@ const createCalculator = () => {
               ramParameter(idNumber),
               gpuParameter(idNumber),
               ssdParameter(idNumber),
-              otherParameter(idNumber),
+              otherParameter(idNumber, true, {
+                powerSupplyUnit: 102,
+                motherboard: 1,
+                rackServer: 1,
+                bladeEnclosure: 0,
+                bladeServer: 0,
+                interfaceCard: 1,
+                serverAssembly: 1,
+              }),
             ],
           }),
           calculatorSummary(idNumber),
@@ -37,5 +45,5 @@ const createCalculator = () => {
 };
 
 if (app) {
-  app.appendChild(createCalculator(1));
+  app.appendChild(createCalculator());
 }
