@@ -47,9 +47,7 @@ export function createStrip({
             text: index,
           }),
           createElement("div", {
-            children: [
-              createElement("h4", { text: title }),
-            ],
+            children: [createElement("h4", { text: title })],
           }),
         ],
       }),
@@ -83,15 +81,19 @@ export function createStrip({
                 className: "calculator-input-label",
                 text: inputConfig.label,
               }),
-              createElement("input", {
-                className: "calculator-input",
-                attrs: {
-                  type: "number",
-                  value: inputConfig.defaultValue ?? 0,
-                  min: 0,
-                  ...inputConfig.inputAttrs,
+              createElement(
+                "input",
+                {
+                  className: "calculator-input",
+                  attrs: {
+                    type: "number",
+                    value: inputConfig.defaultValue ?? 0,
+                    min: 0,
+                    ...inputConfig.inputAttrs,
+                  },
                 },
-              }, events),
+                events,
+              ),
             ],
           }),
 
@@ -116,4 +118,4 @@ export function createStrip({
       }),
     ],
   });
-} 
+}

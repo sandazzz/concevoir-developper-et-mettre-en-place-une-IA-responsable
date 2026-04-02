@@ -1,6 +1,6 @@
 import { createElement } from "../../../utils/create-element.js";
 
-export function calculatorSummary() {
+export function calculatorSummary(idNumber) {
   return createElement("aside", {
     className: "calculator-summary",
     attrs: { "aria-live": "polite" },
@@ -12,7 +12,7 @@ export function calculatorSummary() {
       createElement("strong", {
         className: "calculator-summary-value",
         text: "0",
-        attrs: { id: "global-total-divided" },
+        attrs: { id: `global-total-${idNumber}` },
       }),
 
       createElement("p", {

@@ -1,5 +1,6 @@
 import { createStrip } from "../../../utils/create-element.js";
 import { calculEmpreinteCPU } from "../footprint.js";
+import { updateTotal } from "./update-total.js";
 
 export function cpuParameter(idNumber) {
   console.log("Creating CPU parameter with id:", idNumber);
@@ -18,7 +19,7 @@ export function cpuParameter(idNumber) {
         id: `cpu-physical-input-${idNumber}`,
         name: "Reponse pour Nombre de CPU Physique",
         step: 1,
-        placeholder: "Ex: 128",
+        placeholder: "Ex: 4",
       },
       resultLabel: "Empreinte CPU",
       resultAttrs: { id: `cpu-footprint-result-${idNumber}` },
@@ -33,6 +34,8 @@ export function cpuParameter(idNumber) {
         if (cpuResult) {
           cpuResult.textContent = result;
         }
+
+        updateTotal(idNumber);
       },
     },
   });

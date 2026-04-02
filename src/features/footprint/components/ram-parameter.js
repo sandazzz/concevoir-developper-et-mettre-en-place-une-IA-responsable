@@ -1,4 +1,6 @@
 import { createStrip } from "../../../utils/create-element.js";
+import { calculEmpreinteRAM } from "../footprint.js";
+import { updateTotal } from "./update-total.js";
 
 export function ramParameter(idNumber) {
   return createStrip({
@@ -47,6 +49,7 @@ export function ramParameter(idNumber) {
         if (ramResult) {
           ramResult.textContent = result;
         }
+        updateTotal(idNumber);
       },
     },
 

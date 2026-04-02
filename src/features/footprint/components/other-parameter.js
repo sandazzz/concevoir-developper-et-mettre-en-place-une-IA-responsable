@@ -1,4 +1,6 @@
 import { createElement } from "../../../utils/create-element.js";
+import { calculEmpreinteAutres } from "../footprint.js";
+import { updateTotal } from "./update-total.js";
 
 const createStaticLedgerRow = ({ label, count, criterion, footprint }) =>
   createElement("div", {
@@ -11,7 +13,73 @@ const createStaticLedgerRow = ({ label, count, criterion, footprint }) =>
     ],
   });
 
-export function otherParameter() {
+export function switchAbleInput(isInput, idNumber) {
+  if (!isInput) {
+    return createStaticLedgerRow({
+      label: "HDD",
+      count: "0",
+      criterion: "31,10",
+      footprint: "0,0",
+    });
+  }
+
+  return createElement("div", {
+    className: "calculator-ledger-row calculator-ledger-row-input",
+    children: [
+      createElement("strong", { text: "HDD" }),
+      createElement("label", {
+        className: "calculator-inline-input",
+        attrs: { for: "autres-hdd-input" },
+        children: [
+          createElement(
+            "input",
+            {
+              className: "calculator-input",
+              attrs: {
+                id: `autres-hdd-input-${idNumber}`,
+                type: "number",
+                min: 0,
+                step: 1,
+                value: "",
+                placeholder: "0",
+              },
+            },
+            {
+              input: (event) => {
+                const hddResult = document.getElementById(
+                  `autres-hdd-footprint-${idNumber}`,
+                );
+                const totalAutresResult = document.getElementById(
+                  `autres-total-footprint-${idNumber}`,
+                );
+                const value = Number(event.target.value || 0);
+                const footprint = value * 31.1;
+
+                if (hddResult) {
+                  hddResult.textContent = footprint;
+                }
+
+                const totalFootprint = calculEmpreinteAutres({nbHDD: value});
+
+                if (totalAutresResult) {
+                  totalAutresResult.textContent = totalFootprint;
+                }
+                updateTotal(idNumber);
+              },
+            },
+          ),
+        ],
+      }),
+      createElement("span", { text: "31,10" }),
+      createElement("span", {
+        text: "0",
+        attrs: { id: `autres-hdd-footprint-${idNumber}` },
+      }),
+    ],
+  });
+}
+
+export function otherParameter(idNumber) {
   return createElement("section", {
     className: "calculator-strip calculator-strip-components",
     children: [
@@ -49,34 +117,7 @@ export function otherParameter() {
             criterion: "24,30",
             footprint: "97,2",
           }),
-          createElement("div", {
-            className: "calculator-ledger-row calculator-ledger-row-input",
-            children: [
-              createElement("strong", { text: "HDD" }),
-              createElement("label", {
-                className: "calculator-inline-input",
-                attrs: { for: "autres-hdd-input" },
-                children: [
-                  createElement("input", {
-                    className: "calculator-input",
-                    attrs: {
-                      id: "autres-hdd-input",
-                      type: "number",
-                      min: 0,
-                      step: 1,
-                      value: "",
-                      placeholder: "0",
-                    },
-                  }),
-                ],
-              }),
-              createElement("span", { text: "31,10" }),
-              createElement("span", {
-                text: "0",
-                attrs: { id: "autres-hdd-footprint" },
-              }),
-            ],
-          }),
+          switchAbleInput(false, idNumber),
           createStaticLedgerRow({
             label: "Motherboard",
             count: "1",
@@ -120,8 +161,8 @@ export function otherParameter() {
                 text: "Total autres composants",
               }),
               createElement("strong", {
-                text: "0",
-                attrs: { id: "autres-total-footprint" },
+                text: calculEmpreinteAutres({nbHDD: 0}),
+                attrs: { id: `autres-total-footprint-${idNumber}` },
               }),
               createElement("span", { text: "kg CO2eq" }),
             ],

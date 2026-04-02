@@ -1,4 +1,5 @@
 import { createElement } from "../utils/create-element.js";
+
 export function counter(init) {
   const counter = createElement(
     "button",
