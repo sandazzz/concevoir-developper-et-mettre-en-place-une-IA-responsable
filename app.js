@@ -41,6 +41,6 @@ if (document.readyState === "loading") {
   document.addEventListener("DOMContentLoaded", App.init);
 } else {
   App.init();
-  document.getElementById("mesure").appendChild(calculator1);
-  document.getElementById("mesure").appendChild(calculator2);
+  document.getElementById("id01").appendChild(calculator1);
+  document.getElementById("id02").appendChild(calculator2);
 }
