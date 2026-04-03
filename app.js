@@ -20,11 +20,27 @@ const App = (() => {
   return { init };
 })();
 
-const calculator1 = createCalculator();
+const calculator1 = createCalculator(1);
+
+const calculator2 = createCalculator(2, {
+  gpu: false,
+  ssd: false,
+  other: {
+    powerSupplyUnit: 2,
+    inputHdd: true,
+    motherboard: 1,
+    rackServer: 1,
+    bladeEnclosure: 0,
+    bladeServer: 0,
+    interfaceCard: 1,
+    serverAssembly: 1,
+  },
+});
 
 if (document.readyState === "loading") {
   document.addEventListener("DOMContentLoaded", App.init);
 } else {
   App.init();
   document.getElementById("mesure").appendChild(calculator1);
+  document.getElementById("mesure").appendChild(calculator2);
 }

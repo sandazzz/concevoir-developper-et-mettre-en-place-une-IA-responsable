@@ -103,9 +103,9 @@ export function switchAbleInput(
 
 export function otherParameter(
   idNumber,
-  isInputhdd = false,
   basicValue = {
     powerSupplyUnit: 0,
+    inputHdd: false,
     motherboard: 0,
     rackServer: 0,
     bladeEnclosure: 0,
@@ -151,7 +151,7 @@ export function otherParameter(
             criterion: "24,30",
             footprint: (basicValue.powerSupplyUnit * 24.3).toFixed(1),
           }),
-          switchAbleInput(isInputhdd, idNumber, basicValue),
+          switchAbleInput(basicValue.inputHdd, idNumber, basicValue),
           createStaticLedgerRow({
             label: "Motherboard",
             count: basicValue.motherboard,

@@ -50,14 +50,14 @@ const createGpuRow = ({
       }),
       createElement("label", {
         className: "calculator-inline-input",
-        attrs: { for: countId },
+        attrs: { for: `${countId}-${idNumber}` },
         children: [
           createElement(
             "input",
             {
               className: "calculator-input",
               attrs: {
-                id: countId,
+                id: `${countId}-${idNumber}`,
                 type: "number",
                 name: `Reponse pour ${countId}`,
                 value: 0,
