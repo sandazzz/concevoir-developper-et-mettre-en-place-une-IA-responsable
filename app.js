@@ -20,9 +20,9 @@ const App = (() => {
   return { init };
 })();
 
-const calculator1 = createCalculator(1);
+const calculator1 = createCalculator("Cluster GPU fictif : FAB-IA-01");
 
-const calculator2 = createCalculator(2, {
+const calculator2 = createCalculator("Services du projet ABC", {
   gpu: false,
   ssd: false,
   other: {
