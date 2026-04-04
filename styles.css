@@ -366,7 +366,9 @@ cite {
 .animate-ready {
   opacity: 0;
   transform: translateY(20px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
+  transition:
+    opacity 0.6s ease,
+    transform 0.6s ease;
 }
 
 .animate-in {
@@ -438,9 +440,11 @@ cite {
    -------------------------------------------------------------------------- */
 .hero {
   padding: calc(var(--header-height) + var(--spacing-4xl)) 0 var(--spacing-4xl);
-  background: linear-gradient(135deg,
-      var(--color-primary-dark) 0%,
-      var(--color-primary) 100%);
+  background: linear-gradient(
+    135deg,
+    var(--color-primary-dark) 0%,
+    var(--color-primary) 100%
+  );
   color: var(--color-white);
   text-align: center;
 }
@@ -680,9 +684,11 @@ cite {
   top: 0;
   bottom: 0;
   width: 2px;
-  background: linear-gradient(to bottom,
-      var(--color-primary),
-      var(--color-accent));
+  background: linear-gradient(
+    to bottom,
+    var(--color-primary),
+    var(--color-accent)
+  );
 }
 
 .timeline-item {
@@ -793,9 +799,11 @@ cite {
 }
 
 .stat-card {
-  background: linear-gradient(135deg,
-      var(--color-primary) 0%,
-      var(--color-primary-dark) 100%);
+  background: linear-gradient(
+    135deg,
+    var(--color-primary) 0%,
+    var(--color-primary-dark) 100%
+  );
   color: var(--color-white);
   padding: var(--spacing-lg);
   border-radius: var(--border-radius-lg);
@@ -1052,9 +1060,11 @@ tr:hover {
   justify-content: center;
   width: 40px;
   height: 40px;
-  background: linear-gradient(135deg,
-      var(--color-primary),
-      var(--color-accent));
+  background: linear-gradient(
+    135deg,
+    var(--color-primary),
+    var(--color-accent)
+  );
   color: var(--color-white);
   border-radius: 50%;
   font-weight: 700;
@@ -1269,9 +1279,11 @@ tr:hover {
    Case Study
    -------------------------------------------------------------------------- */
 .practical-case {
-  background: linear-gradient(135deg,
-      rgba(45, 106, 79, 0.05),
-      rgba(116, 198, 157, 0.1));
+  background: linear-gradient(
+    135deg,
+    rgba(45, 106, 79, 0.05),
+    rgba(116, 198, 157, 0.1)
+  );
   padding: var(--spacing-xl);
   border-radius: var(--border-radius-lg);
   border: 2px solid var(--color-primary);
@@ -1279,9 +1291,11 @@ tr:hover {
 
 .calculator-studio {
   background:
-    linear-gradient(180deg,
+    linear-gradient(
+      180deg,
       rgba(247, 244, 235, 0.92),
-      rgba(255, 255, 255, 0.96)),
+      rgba(255, 255, 255, 0.96)
+    ),
     linear-gradient(135deg, rgba(45, 106, 79, 0.04), transparent 55%);
   border-color: rgba(45, 106, 79, 0.45);
 }
@@ -1351,9 +1365,11 @@ tr:hover {
   border-radius: 0.75rem;
   font-weight: 700;
   color: var(--color-primary-dark);
-  background: linear-gradient(135deg,
-      rgba(45, 106, 79, 0.14),
-      rgba(233, 196, 106, 0.35));
+  background: linear-gradient(
+    135deg,
+    rgba(45, 106, 79, 0.14),
+    rgba(233, 196, 106, 0.35)
+  );
 }
 
 .calculator-facts {
@@ -1421,9 +1437,11 @@ tr:hover {
   align-content: start;
   padding: 1rem;
   border-radius: var(--border-radius-md);
-  background: linear-gradient(135deg,
-      rgba(45, 106, 79, 0.08),
-      rgba(45, 106, 79, 0.02));
+  background: linear-gradient(
+    135deg,
+    rgba(45, 106, 79, 0.08),
+    rgba(45, 106, 79, 0.02)
+  );
 }
 
 .calculator-inline-result strong {
@@ -1493,7 +1511,9 @@ tr:hover {
   background-position:
     calc(100% - 1.2rem) calc(50% - 0.14rem),
     calc(100% - 0.85rem) calc(50% - 0.14rem);
-  background-size: 0.38rem 0.38rem, 0.38rem 0.38rem;
+  background-size:
+    0.38rem 0.38rem,
+    0.38rem 0.38rem;
   background-repeat: no-repeat;
   padding-right: 2.2rem;
 }
@@ -1629,8 +1649,7 @@ tr:hover {
 
   .calculator-matrix-header,
   .calculator-matrix-row {
-      grid-template-columns: minmax(0, 1.5fr) repeat(3, minmax(0, 1fr));
-
+    grid-template-columns: minmax(0, 1.5fr) repeat(3, minmax(0, 1fr));
   }
 }
 
@@ -2126,9 +2145,11 @@ tr:hover {
 .metric-card {
   text-align: center;
   padding: var(--spacing-lg);
-  background: linear-gradient(135deg,
-      var(--color-primary),
-      var(--color-primary-dark));
+  background: linear-gradient(
+    135deg,
+    var(--color-primary),
+    var(--color-primary-dark)
+  );
   color: var(--color-white);
   border-radius: var(--border-radius-lg);
 }
@@ -2249,9 +2270,11 @@ tr:hover {
   justify-content: center;
   width: 48px;
   height: 48px;
-  background: linear-gradient(135deg,
-      var(--color-primary),
-      var(--color-accent));
+  background: linear-gradient(
+    135deg,
+    var(--color-primary),
+    var(--color-accent)
+  );
   color: var(--color-white);
   border-radius: 50%;
   font-weight: 700;
@@ -2277,9 +2300,11 @@ tr:hover {
    Conclusion Section
    -------------------------------------------------------------------------- */
 .conclusion-section {
-  background: linear-gradient(135deg,
-      var(--color-primary-dark) 0%,
-      var(--color-primary) 100%);
+  background: linear-gradient(
+    135deg,
+    var(--color-primary-dark) 0%,
+    var(--color-primary) 100%
+  );
   color: var(--color-white);
 }
 
@@ -2689,23 +2714,29 @@ tr:hover {
 }
 
 .result-card.positive {
-  background: linear-gradient(135deg,
-      rgba(45, 106, 79, 0.1),
-      rgba(116, 198, 157, 0.2));
+  background: linear-gradient(
+    135deg,
+    rgba(45, 106, 79, 0.1),
+    rgba(116, 198, 157, 0.2)
+  );
   border: 2px solid var(--color-success);
 }
 
 .result-card.negative {
-  background: linear-gradient(135deg,
-      rgba(231, 111, 81, 0.1),
-      rgba(231, 111, 81, 0.2));
+  background: linear-gradient(
+    135deg,
+    rgba(231, 111, 81, 0.1),
+    rgba(231, 111, 81, 0.2)
+  );
   border: 2px solid var(--color-danger);
 }
 
 .result-card.warning {
-  background: linear-gradient(135deg,
-      rgba(233, 196, 106, 0.2),
-      rgba(233, 196, 106, 0.3));
+  background: linear-gradient(
+    135deg,
+    rgba(233, 196, 106, 0.2),
+    rgba(233, 196, 106, 0.3)
+  );
   border: 2px solid var(--color-warning);
 }
 
@@ -2945,7 +2976,6 @@ tr:hover {
    Print Styles
    -------------------------------------------------------------------------- */
 @media print {
-
   .site-header,
   .back-to-top,
   .hero-cta,
@@ -2974,7 +3004,6 @@ tr:hover {
    Reduced Motion
    -------------------------------------------------------------------------- */
 @media (prefers-reduced-motion: reduce) {
-
   *,
   *::before,
   *::after {
@@ -2983,4 +3012,18 @@ tr:hover {
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
+}
+
+.modal {
+  z-index: 3;
+  display: none;
+  padding-top: 100px;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.4);
 }
