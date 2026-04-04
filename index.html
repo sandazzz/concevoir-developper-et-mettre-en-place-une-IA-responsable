@@ -2121,35 +2121,44 @@
               </div>
             </div>
           </article>
-          <button
-            onclick="document.getElementById('id01').style.display = 'block'"
-            class="w3-button"
+          <article class="content-block practical-case">
+            <button
+              onclick="document.getElementById('id01').style.display = 'block'"
+              class="w3-button"
+            >
+              Exercice : Cluster GPU fictif : FAB-IA-01
+            </button>
+            <button
+              onclick="document.getElementById('id02').style.display = 'block'"
+              class="w3-button"
+            >
+              Exercice Services du projet ABC
+            </button>
+          </article>
+          <div
+            id="id01"
+            class="w3-modal"
+            onclick="
+              var modal = document.getElementById('id01');
+              window.onclick = function (event) {
+                if (event.target == modal) {
+                  modal.style.display = 'none';
+                }
+              };
+            "
+          ></div>
+          <div
+            id="id02"
+            class="w3-modal"
+            onclick="
+              var modal = document.getElementById('id02');
+              window.onclick = function (event) {
+                if (event.target == modal) {
+                  modal.style.display = 'none';
+                }
+              };
+            "
           >
-            Exercice : Cluster GPU fictif : FAB-IA-01
-          </button>
-          <button
-            onclick="document.getElementById('id02').style.display = 'block'"
-            class="w3-button"
-          >
-            Exercice Services du projet ABC
-          </button>
-          <div id="id01" class="w3-modal">
-            <header class="w3-container w3-teal">
-              <h2
-                onclick="document.getElementById('id01').style.display = 'none'"
-              >
-                Modal Header
-              </h2>
-            </header>
-          </div>
-          <div id="id02" class="w3-modal">
-            <header class="w3-container w3-teal">
-              <h2
-                onclick="document.getElementById('id02').style.display = 'none'"
-              >
-                Modal Header
-              </h2>
-            </header>
           </div>
         </div>
       </section>
