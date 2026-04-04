@@ -52,7 +52,7 @@ export const calculEmpreinteSSD = ({
   return { empreinte, nombreSSDs: nombreSSDs.toFixed(2) };
 };
 
-export const calculEmpreinteAutres = (
+export const calculEmpreinteAutres = ({
   nbPowerSupplyUnit = 2,
   nbHDD,
   nbMotherboard = 1,
@@ -61,7 +61,7 @@ export const calculEmpreinteAutres = (
   nbBladeServer = 0,
   nbInterfaceCard = 1,
   nbServerAssembly = 1,
-) => {
+}) => {
   const crPowerSupplyUnit = 24.3;
   const crHDD = 31.1;
   const crMotherboard = 66.1;
