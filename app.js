@@ -4,6 +4,7 @@ import ScrollAnimations from "./src/features/scroll-animations.js";
 import DecisionTree from "./src/features/decision-tree.js";
 import AnalyseResponse from "./src/features/analyse-response.js";
 import { createCalculator } from "./src/features/footprint/calculator.js";
+import { closeModal } from "./src/features/close-modal.js";
 
 const App = (() => {
   const init = () => {
@@ -12,6 +13,7 @@ const App = (() => {
     ScrollAnimations();
     AnalyseResponse();
     DecisionTree();
+    closeModal();
     console.log("Formation IA Responsable - Site initialisé");
   };
 
