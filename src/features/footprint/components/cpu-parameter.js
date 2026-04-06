@@ -1,4 +1,4 @@
-import { updateTotal } from "./update-total.js";
+import { updateTotal } from "../update-total.js";
 import { BasicParameter } from "./ui/basic-parameter.js";
 
 const calculEmpreinteCPU = (nBCpusPhysiques, vCpuParCpu = 32) => {

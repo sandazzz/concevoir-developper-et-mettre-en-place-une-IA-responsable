@@ -1,5 +1,4 @@
-import { createStrip } from "../../../utils/create-element.js";
-import { updateTotal } from "./update-total.js";
+import { updateTotal } from "../update-total.js";
 import { BasicParameter } from "./ui/basic-parameter.js";
 
 export const calculEmpreinteRAM = (QttDeGoDeRAM, GoModule = 128) => {

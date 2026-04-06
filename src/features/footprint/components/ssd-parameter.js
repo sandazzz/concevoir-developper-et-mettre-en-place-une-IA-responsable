@@ -1,4 +1,4 @@
-import { updateTotal } from "./update-total.js";
+import { updateTotal } from "../update-total.js";
 import { BasicParameter } from "./ui/basic-parameter.js";
 
 export function SsdParameter(idNumber) {

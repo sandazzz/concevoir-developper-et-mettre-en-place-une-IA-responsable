@@ -1,6 +1,6 @@
 import { createElement } from "@/src/utils/create-element.js";
 import { Header } from "./ui/basic-parameter.js";
-import { updateTotal } from "./update-total.js";
+import { updateTotal } from "../update-total.js";
 
 const GPU_MODELS = ["A100", "H100", "Tesla V100"];
 

@@ -111,7 +111,6 @@ export function switchAbleInput(
                 if (hddResult) {
                   hddResult.textContent = footprint;
                 }
-                console.log(updateTotalParameter.powerSupplyUnit);
 
                 const totalFootprint = calculEmpreinteAutres({
                   nbPowerSupplyUnit: updateTotalParameter.powerSupplyUnit,
