@@ -1,10 +1,15 @@
-import { createStrip } from "../../../utils/create-element.js";
-import { calculEmpreinteCPU } from "../footprint.js";
-import { updateTotal } from "./update-total.js";
+import { updateTotal } from "../update-total.js";
+import { BasicParameter } from "./ui/basic-parameter.js";
 
-export function cpuParameter(idNumber) {
-  console.log("Creating CPU parameter with id:", idNumber);
-  return createStrip({
+const calculEmpreinteCPU = (nBCpusPhysiques, vCpuParCpu = 32) => {
+  const empreinte =
+    nBCpusPhysiques * ((vCpuParCpu * 0.173333333333 + 0.491) * 1.97 + 9.14);
+  const resultatFinal = Number(empreinte.toFixed(1));
+  return resultatFinal;
+};
+
+export function CpuParameter(idNumber) {
+  const el = BasicParameter({
     index: "A",
     title: "Parametrage CPU",
     facts: [
@@ -27,7 +32,9 @@ export function cpuParameter(idNumber) {
     },
     events: {
       input: (event) => {
-        const cpuResult = document.getElementById(`cpu-footprint-result-${idNumber}`);
+        const cpuResult = document.getElementById(
+          `cpu-footprint-result-${idNumber}`,
+        );
         const value = Number(event.target.value || 0);
         const result = calculEmpreinteCPU(value);
 
@@ -39,4 +46,6 @@ export function cpuParameter(idNumber) {
       },
     },
   });
+
+  return el;
 }

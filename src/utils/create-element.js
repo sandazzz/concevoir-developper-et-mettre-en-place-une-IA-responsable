@@ -17,11 +17,8 @@ export function createElement(tag, options = {}, on) {
   }
 
   if (on) {
-    console.log("EVENTS DETECTED", on);
-
     Object.entries(on).forEach(([event, handler]) => {
       el.addEventListener(event, handler);
-      console.log(`Event listener added: ${event}`);
     });
   }
   return el;

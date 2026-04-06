@@ -1,9 +1,21 @@
-import { createStrip } from "../../../utils/create-element.js";
-import { calculEmpreinteRAM } from "../footprint.js";
-import { updateTotal } from "./update-total.js";
+import { updateTotal } from "../update-total.js";
+import { BasicParameter } from "./ui/basic-parameter.js";
 
-export function ramParameter(idNumber) {
-  return createStrip({
+export const calculEmpreinteRAM = (QttDeGoDeRAM, GoModule = 128) => {
+  const ramDieParGo = 0.596666666666667;
+  const critereDie = 2.2;
+  const critereBase = 5.22;
+  const QttDeBaretteDeRAM = QttDeGoDeRAM / GoModule;
+
+  const empreinte =
+    QttDeBaretteDeRAM * (GoModule * ramDieParGo * critereDie + critereBase);
+
+  const resultatFinal = Number(empreinte.toFixed(1));
+  return resultatFinal;
+};
+
+export function RamParameter(idNumber) {
+  return BasicParameter({
     index: "B",
     title: "Parametrage RAM",
     facts: [
@@ -34,15 +46,20 @@ export function ramParameter(idNumber) {
     },
     events: {
       input: (event) => {
-        const ramGoPerModule = document.getElementById(`ram-go-per-module-${idNumber}`);
-        const barretteOutput = document.getElementById(`ram-barette-output-${idNumber}`);
-        const numberBarrettes = Number(event.target.value) / Number(ramGoPerModule.textContent);
+        const barretteOutput = document.getElementById(
+          `ram-barette-output-${idNumber}`,
+        );
+
+        const ramGoPerModule = 128;
+        const numberBarrettes = Number(event.target.value) / ramGoPerModule;
 
         if (barretteOutput) {
           barretteOutput.textContent = numberBarrettes;
         }
 
-        const ramResult = document.getElementById(`ram-footprint-result-${idNumber}`);
+        const ramResult = document.getElementById(
+          `ram-footprint-result-${idNumber}`,
+        );
         const value = Number(event.target.value || 0);
         const result = calculEmpreinteRAM(value);
 
@@ -52,6 +69,5 @@ export function ramParameter(idNumber) {
         updateTotal(idNumber);
       },
     },
-
   });
 }

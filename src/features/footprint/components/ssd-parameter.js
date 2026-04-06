@@ -1,8 +1,8 @@
-import { createStrip } from "../../../utils/create-element.js";
-import { updateTotal } from "./update-total.js";
+import { updateTotal } from "../update-total.js";
+import { BasicParameter } from "./ui/basic-parameter.js";
 
-export function ssdParameter(idNumber) {
-  return createStrip({
+export function SsdParameter(idNumber) {
+  const el = BasicParameter({
     index: "D",
     title: "Parametrage SSD",
     facts: [
@@ -45,6 +45,7 @@ export function ssdParameter(idNumber) {
       },
     },
   });
+  return el;
 }
 
 const calculEmpreinteSSD = (

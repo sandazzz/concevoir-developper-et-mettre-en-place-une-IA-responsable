@@ -1,6 +1,47 @@
-import { createElement } from "../../../utils/create-element.js";
-import { calculEmpreinteAutres } from "../footprint.js";
-import { updateTotal } from "./update-total.js";
+import { createElement } from "@/src/utils/create-element.js";
+import { Header } from "./ui/basic-parameter.js";
+import { updateTotal } from "../update-total.js";
+
+export const calculEmpreinteAutres = ({
+  nbPowerSupplyUnit = 2,
+  nbHDD,
+  nbMotherboard = 1,
+  nbRackServer = 1,
+  nbBladeEnclosure = 0,
+  nbBladeServer = 0,
+  nbInterfaceCard = 1,
+  nbServerAssembly = 1,
+}) => {
+  const crPowerSupplyUnit = 24.3;
+  const crHDD = 31.1;
+  const crMotherboard = 66.1;
+  const crRackServer = 150.0;
+  const crBladeEnclosure = 880;
+  const crBladeServer = 30.9;
+  const crInterfaceCard = 33.05;
+  const crServerAssembly = 6.68;
+
+  const emprPowerSupplyUnit = nbPowerSupplyUnit * 2 * crPowerSupplyUnit;
+  const emprHDD = nbHDD * crHDD;
+  const emprMotherboard = nbMotherboard * crMotherboard;
+  const emprRackServer = nbRackServer * crRackServer;
+  const emprBladeEnclosure = nbBladeEnclosure * crBladeEnclosure;
+  const emprBladeServer = nbBladeServer * crBladeServer;
+  const emprInterfaceCard = nbInterfaceCard * crInterfaceCard;
+  const emprServerAssembly = nbServerAssembly * crServerAssembly;
+
+  const total =
+    emprPowerSupplyUnit +
+    emprHDD +
+    emprMotherboard +
+    emprRackServer +
+    emprBladeEnclosure +
+    emprBladeServer +
+    emprInterfaceCard +
+    emprServerAssembly;
+
+  return total.toFixed(2);
+};
 
 const createStaticLedgerRow = ({ label, count, criterion, footprint }) =>
   createElement("div", {
@@ -70,7 +111,6 @@ export function switchAbleInput(
                 if (hddResult) {
                   hddResult.textContent = footprint;
                 }
-                console.log(updateTotalParameter.powerSupplyUnit);
 
                 const totalFootprint = calculEmpreinteAutres({
                   nbPowerSupplyUnit: updateTotalParameter.powerSupplyUnit,
@@ -117,22 +157,7 @@ export function otherParameter(
   return createElement("section", {
     className: "calculator-strip calculator-strip-components",
     children: [
-      createElement("div", {
-        className: "calculator-strip-head",
-        children: [
-          createElement("span", {
-            className: "calculator-strip-index",
-            text: "E",
-          }),
-          createElement("div", {
-            children: [
-              createElement("h4", {
-                text: "Parametrage des autres composants",
-              }),
-            ],
-          }),
-        ],
-      }),
+      Header({ index: "E", title: "Parametrage des autres composants" }),
       createElement("div", {
         className: "calculator-ledger",
         children: [
