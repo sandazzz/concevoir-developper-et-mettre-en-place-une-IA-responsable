@@ -1,12 +1,12 @@
-import { createElement } from "../../../utils/create-element.js";
+import { createElement } from "@/src/utils/create-element.js";
 
-export function calculatorHeader(excerciseNumber) {
+export function calculatorHeader(excerciseName) {
   return createElement("div", {
     className: "calculator-studio-heading",
     children: [
       createElement("span", {
         className: "calculator-kicker",
-        text: `Calculatrice exercice : ${excerciseNumber}`,
+        text: `Calculatrice exercice : ${excerciseName}`,
       }),
     ],
   });

@@ -1,23 +1,3 @@
-export const calculEmpreinteCPU = (nBCpusPhysiques, vCpuParCpu = 32) => {
-  const empreinte =
-    nBCpusPhysiques * ((vCpuParCpu * 0.173333333333 + 0.491) * 1.97 + 9.14);
-  const resultatFinal = Number(empreinte.toFixed(1));
-  return resultatFinal;
-};
-
-export const calculEmpreinteRAM = (QttDeGoDeRAM, GoModule = 128) => {
-  const ramDieParGo = 0.596666666666667;
-  const critereDie = 2.2;
-  const critereBase = 5.22;
-  const QttDeBaretteDeRAM = QttDeGoDeRAM / GoModule;
-
-  const empreinte =
-    QttDeBaretteDeRAM * (GoModule * ramDieParGo * critereDie + critereBase);
-
-  const resultatFinal = Number(empreinte.toFixed(1));
-  return resultatFinal;
-};
-
 export const calculCritereGPU = (modeleGPU) => {
   const gpuData = {
     A100: 200,

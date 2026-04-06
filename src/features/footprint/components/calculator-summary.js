@@ -1,4 +1,4 @@
-import { createElement } from "../../../utils/create-element.js";
+import { createElement } from "@/src/utils/create-element.js";
 
 export function calculatorSummary(idNumber) {
   return createElement("aside", {

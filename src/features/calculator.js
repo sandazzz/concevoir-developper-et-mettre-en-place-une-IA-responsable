@@ -1,10 +1,10 @@
 import { createElement } from "../utils/create-element.js";
 import { calculatorHeader } from "../features/footprint/components/calculator-header.js";
 import { calculatorSummary } from "../features/footprint/components/calculator-summary.js";
-import { ramParameter } from "../features/footprint/components/ram-parameter.js";
-import { cpuParameter } from "../features/footprint/components/cpu-parameter.js";
+import { RamParameter } from "../features/footprint/components/ram-parameter.js";
+import { CpuParameter } from "../features/footprint/components/cpu-parameter.js";
 import { gpuParameter } from "../features/footprint/components/gpu-parameter.js";
-import { ssdParameter } from "../features/footprint/components/ssd-parameter.js";
+import { SsdParameter } from "../features/footprint/components/ssd-parameter.js";
 import { otherParameter } from "../features/footprint/components/other-parameter.js";
 
 export const createCalculator = (exerciceNumber, config = {}) => {
@@ -37,10 +37,10 @@ export const createCalculator = (exerciceNumber, config = {}) => {
   };
 
   const parameterMap = {
-    cpu: cpuParameter,
-    ram: ramParameter,
+    cpu: CpuParameter,
+    ram: RamParameter,
     gpu: gpuParameter,
-    ssd: ssdParameter,
+    ssd: SsdParameter,
   };
 
   const dynamicParams = Object.entries(parameterMap)
