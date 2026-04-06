@@ -3,7 +3,7 @@ import ScrollFeatures from "./src/features/scroll-features.js";
 import ScrollAnimations from "./src/features/scroll-animations.js";
 import DecisionTree from "./src/features/decision-tree.js";
 import AnalyseResponse from "./src/features/analyse-response.js";
-import { createCalculator } from "./src/features/calculator.js";
+import { createCalculator } from "./src/features/footprint/calculator.js";
 
 const App = (() => {
   const init = () => {

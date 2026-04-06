@@ -1,5 +1,6 @@
 import { createElement } from "@/src/utils/create-element.js";
-import { updateTotal } from "./update-total.js";
+import { Header } from "./ui/basic-parameter.js";
+import { updateTotal } from "../update-total.js";
 
 export const calculEmpreinteAutres = ({
   nbPowerSupplyUnit = 2,
@@ -157,22 +158,7 @@ export function otherParameter(
   return createElement("section", {
     className: "calculator-strip calculator-strip-components",
     children: [
-      createElement("div", {
-        className: "calculator-strip-head",
-        children: [
-          createElement("span", {
-            className: "calculator-strip-index",
-            text: "E",
-          }),
-          createElement("div", {
-            children: [
-              createElement("h4", {
-                text: "Parametrage des autres composants",
-              }),
-            ],
-          }),
-        ],
-      }),
+      Header({ index: "E", title: "Parametrage des autres composants" }),
       createElement("div", {
         className: "calculator-ledger",
         children: [

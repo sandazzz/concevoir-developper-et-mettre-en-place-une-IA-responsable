@@ -1,11 +1,11 @@
-import { createElement } from "../utils/create-element.js";
-import { calculatorHeader } from "../features/footprint/components/calculator-header.js";
-import { calculatorSummary } from "../features/footprint/components/calculator-summary.js";
-import { RamParameter } from "../features/footprint/components/ram-parameter.js";
-import { CpuParameter } from "../features/footprint/components/cpu-parameter.js";
-import { GpuParameter } from "../features/footprint/components/gpu-parameter.js";
-import { SsdParameter } from "../features/footprint/components/ssd-parameter.js";
-import { otherParameter } from "../features/footprint/components/other-parameter.js";
+import { createElement } from "../../utils/create-element.js";
+import { calculatorHeader } from "./components/calculator-header.js";
+import { calculatorSummary } from "./components/calculator-summary.js";
+import { RamParameter } from "./components/ram-parameter.js";
+import { CpuParameter } from "./components/cpu-parameter.js";
+import { GpuParameter } from "./components/gpu-parameter.js";
+import { SsdParameter } from "./components/ssd-parameter.js";
+import { otherParameter } from "./components/other-parameter.js";
 
 export const createCalculator = (exerciceNumber, config = {}) => {
   const idNumber = Math.random().toString(16).slice(2);
