@@ -24,7 +24,7 @@ export function BasicParameter({
   });
 }
 
-function Header({ index, title }) {
+export function Header({ index, title }) {
   return createElement("div", {
     className: "calculator-strip-head",
     children: [
@@ -39,7 +39,7 @@ function Header({ index, title }) {
   });
 }
 
-function Facts({ facts }) {
+export function Facts({ facts }) {
   return createElement("div", {
     className: "calculator-facts",
     children: facts.map((fact) => Fact({ fact })),

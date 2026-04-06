@@ -3,7 +3,7 @@ import { calculatorHeader } from "../features/footprint/components/calculator-he
 import { calculatorSummary } from "../features/footprint/components/calculator-summary.js";
 import { RamParameter } from "../features/footprint/components/ram-parameter.js";
 import { CpuParameter } from "../features/footprint/components/cpu-parameter.js";
-import { gpuParameter } from "../features/footprint/components/gpu-parameter.js";
+import { GpuParameter } from "../features/footprint/components/gpu-parameter.js";
 import { SsdParameter } from "../features/footprint/components/ssd-parameter.js";
 import { otherParameter } from "../features/footprint/components/other-parameter.js";
 
@@ -39,7 +39,7 @@ export const createCalculator = (exerciceNumber, config = {}) => {
   const parameterMap = {
     cpu: CpuParameter,
     ram: RamParameter,
-    gpu: gpuParameter,
+    gpu: GpuParameter,
     ssd: SsdParameter,
   };
 

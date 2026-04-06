@@ -1,16 +1,20 @@
-import { createElement } from "../../../utils/create-element.js";
-import { calculCritereGPU } from "../footprint.js";
+import { createElement } from "@/src/utils/create-element.js";
+import { Header } from "./ui/basic-parameter.js";
 import { updateTotal } from "./update-total.js";
 
 const GPU_MODELS = ["A100", "H100", "Tesla V100"];
 
-const createGpuRow = ({
-  familyId,
-  countId,
-  criterionId,
-  resultId,
-  idNumber,
-}) => {
+export const calculCritereGPU = (modeleGPU) => {
+  const gpuData = {
+    A100: 200,
+    H100: 320,
+    "Tesla V100": 175,
+  };
+
+  return gpuData[modeleGPU];
+};
+
+const GpuRow = ({ familyId, countId, criterionId, resultId, idNumber }) => {
   return createElement("div", {
     className: "calculator-matrix-row",
     children: [
@@ -32,14 +36,26 @@ const createGpuRow = ({
             },
             {
               change: (event) => {
-                const selectElement = event.target;
-                const selectedModel = selectElement.value;
+                const selectedModel = event.target.value;
                 const criterionValue = calculCritereGPU(selectedModel);
                 const criterionElement = document.getElementById(
                   `${criterionId}-${idNumber}`,
                 );
                 if (criterionElement) {
                   criterionElement.textContent = criterionValue;
+                }
+
+                const inputElement = document.getElementById(
+                  `${countId}-${idNumber}`,
+                );
+
+                const resultElement = document.getElementById(
+                  `${resultId}-${idNumber}`,
+                );
+ 
+                if (inputElement && resultElement) {
+                  resultElement.textContent =
+                    Number(inputElement.value) * criterionValue;
                 }
                 updateGpuTotal(idNumber);
                 updateTotal(idNumber);
@@ -100,6 +116,32 @@ const createGpuRow = ({
   });
 };
 
+const GpuMatrixHeader = () => {
+  return createElement("div", {
+    className: "calculator-matrix-header",
+    children: [
+      createElement("span", { text: "Famille GPU" }),
+      createElement("span", { text: "Nombre" }),
+      createElement("span", { text: "Critere" }),
+      createElement("span", { text: "Empreinte" }),
+    ],
+  });
+};
+
+const GpuMatrixTotal = (idNumber) => {
+  return createElement("div", {
+    className: "calculator-matrix-total",
+    children: [
+      createElement("span", { text: "Total GPU" }),
+      createElement("strong", {
+        text: "0",
+        attrs: { id: `gpu-footprint-result-${idNumber}` },
+      }),
+      createElement("span", { text: "kg CO2eq" }),
+    ],
+  });
+};
+
 const updateGpuTotal = (idNumber) => {
   const gpu1 = Number(
     document.getElementById(`gpu-footprint-result-1-${idNumber}`)
@@ -119,59 +161,30 @@ const updateGpuTotal = (idNumber) => {
   }
 };
 
-export function gpuParameter(idNumber) {
+export function GpuParameter(idNumber) {
   return createElement("section", {
     className: "calculator-strip calculator-strip-gpu",
     children: [
-      createElement("div", {
-        className: "calculator-strip-head",
-        children: [
-          createElement("span", {
-            className: "calculator-strip-index",
-            text: "C",
-          }),
-          createElement("div", {
-            children: [createElement("h4", { text: "Parametrage GPU" })],
-          }),
-        ],
-      }),
+      Header({ index: "C", title: "Parametrage GPU" }),
       createElement("div", {
         className: "calculator-matrix",
         children: [
-          createElement("div", {
-            className: "calculator-matrix-header",
-            children: [
-              createElement("span", { text: "Famille GPU" }),
-              createElement("span", { text: "Nombre" }),
-              createElement("span", { text: "Critere" }),
-              createElement("span", { text: "Empreinte" }),
-            ],
-          }),
-          createGpuRow({
+          GpuMatrixHeader(),
+          GpuRow({
             familyId: "gpu-family-1",
             countId: "gpu-nb-1",
             criterionId: "gpu-criterion-1",
             resultId: "gpu-footprint-result-1",
             idNumber: idNumber,
           }),
-          createGpuRow({
+          GpuRow({
             familyId: "gpu-family-2",
             countId: "gpu-nb-2",
             criterionId: "gpu-criterion-2",
             resultId: "gpu-footprint-result-2",
             idNumber: idNumber,
           }),
-          createElement("div", {
-            className: "calculator-matrix-total",
-            children: [
-              createElement("span", { text: "Total GPU" }),
-              createElement("strong", {
-                text: "0",
-                attrs: { id: `gpu-footprint-result-${idNumber}` },
-              }),
-              createElement("span", { text: "kg CO2eq" }),
-            ],
-          }),
+          GpuMatrixTotal(idNumber),
         ],
       }),
     ],
