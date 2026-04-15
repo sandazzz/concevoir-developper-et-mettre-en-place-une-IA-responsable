@@ -60,6 +60,27 @@ export const createCalculator = (exerciceNumber, config = {}) => {
   return createElement("article", {
     className: "content-block practical-case calculator-studio",
     children: [
+      createElement(
+        "button",
+        {
+          className: "modal-close",
+          text: "×",
+          attrs: {
+            type: "button",
+            "aria-label": "Fermer la fenêtre",
+          },
+        },
+        {
+          click: () => {
+            const modals = document.querySelectorAll(".modal");
+            modals.forEach((modal) => {
+              if (modal.style.display === "block") {
+                modal.style.display = "none";
+              }
+            });
+          },
+        },
+      ),
       createElement("div", {
         className: "calculator-studio-shell",
         children: [
