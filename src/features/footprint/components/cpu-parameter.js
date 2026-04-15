@@ -1,7 +1,7 @@
 import { updateTotal } from "../update-total.js";
 import { BasicParameter } from "./ui/basic-parameter.js";
 
-const calculEmpreinteCPU = (nBCpusPhysiques, vCpuParCpu = 32) => {
+const calculEmpreinteCPU = (nBCpusPhysiques, vCpuParCpu = 24) => {
   const empreinte =
     nBCpusPhysiques * ((vCpuParCpu * 0.173333333333 + 0.491) * 1.97 + 9.14);
   const resultatFinal = Number(empreinte.toFixed(1));
@@ -15,7 +15,7 @@ export function CpuParameter(idNumber) {
     facts: [
       { label: "Type / Modele", value: "AMD EPIC" },
       { label: "Famille", value: "Zen 2" },
-      { label: "vCPU par CPU", value: "32" },
+      { label: "vCPU par CPU", value: "24" },
     ],
     inputConfig: {
       label: "Nombre de CPU physiques",
