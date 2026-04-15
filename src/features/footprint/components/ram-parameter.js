@@ -2,7 +2,7 @@ import { updateTotal } from "../update-total.js";
 import { BasicParameter } from "./ui/basic-parameter.js";
 
 export const calculEmpreinteRAM = (QttDeGoDeRAM, GoModule = 128) => {
-  const ramDieParGo = 0.596666666666667;
+  const ramDieParGo = (0.8 + 0.57 + 0.42) / 3;
   const critereDie = 2.2;
   const critereBase = 5.22;
   const QttDeBaretteDeRAM = QttDeGoDeRAM / GoModule;
@@ -10,7 +10,7 @@ export const calculEmpreinteRAM = (QttDeGoDeRAM, GoModule = 128) => {
   const empreinte =
     QttDeBaretteDeRAM * (GoModule * ramDieParGo * critereDie + critereBase);
 
-  const resultatFinal = Number(empreinte.toFixed(1));
+  const resultatFinal = Number(empreinte.toFixed());
   return resultatFinal;
 };
 

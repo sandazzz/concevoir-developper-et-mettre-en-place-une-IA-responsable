@@ -4,7 +4,7 @@ import { BasicParameter } from "./ui/basic-parameter.js";
 const calculEmpreinteCPU = (nBCpusPhysiques, vCpuParCpu = 24) => {
   const empreinte =
     nBCpusPhysiques * ((vCpuParCpu * 0.173333333333 + 0.491) * 1.97 + 9.14);
-  const resultatFinal = Number(empreinte.toFixed(1));
+  const resultatFinal = Number(empreinte.toFixed());
   return resultatFinal;
 };
 

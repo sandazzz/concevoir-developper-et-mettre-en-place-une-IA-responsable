@@ -40,7 +40,7 @@ export const calculEmpreinteAutres = ({
     emprInterfaceCard +
     emprServerAssembly;
 
-  return total.toFixed(2);
+  return total.toFixed();
 };
 
 const createStaticLedgerRow = ({ label, count, criterion, footprint }) =>

@@ -157,7 +157,7 @@ const updateGpuTotal = (idNumber) => {
   );
 
   if (totalElement) {
-    totalElement.textContent = (gpu1 + gpu2).toFixed(2);
+    totalElement.textContent = (gpu1 + gpu2).toFixed();
   }
 };
 
