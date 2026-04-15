@@ -7,8 +7,8 @@ export const calculEmpreinteAutres = ({
   nbHDD,
   nbMotherboard = 1,
   nbRackServer = 1,
-  nbBladeEnclosure = 0,
-  nbBladeServer = 0,
+  //nbBladeEnclosure = 0,
+  //nbBladeServer = 0,
   nbInterfaceCard = 1,
   nbServerAssembly = 1,
 }) => {
@@ -16,8 +16,8 @@ export const calculEmpreinteAutres = ({
   const crHDD = 31.1;
   const crMotherboard = 66.1;
   const crRackServer = 150.0;
-  const crBladeEnclosure = 880;
-  const crBladeServer = 30.9;
+  //const crBladeEnclosure = 880;
+  //const crBladeServer = 30.9;
   const crInterfaceCard = 33.05;
   const crServerAssembly = 6.68;
 
@@ -25,8 +25,8 @@ export const calculEmpreinteAutres = ({
   const emprHDD = nbHDD * crHDD;
   const emprMotherboard = nbMotherboard * crMotherboard;
   const emprRackServer = nbRackServer * crRackServer;
-  const emprBladeEnclosure = nbBladeEnclosure * crBladeEnclosure;
-  const emprBladeServer = nbBladeServer * crBladeServer;
+  //const emprBladeEnclosure = nbBladeEnclosure * crBladeEnclosure;
+  //const emprBladeServer = nbBladeServer * crBladeServer;
   const emprInterfaceCard = nbInterfaceCard * crInterfaceCard;
   const emprServerAssembly = nbServerAssembly * crServerAssembly;
 
@@ -35,12 +35,12 @@ export const calculEmpreinteAutres = ({
     emprHDD +
     emprMotherboard +
     emprRackServer +
-    emprBladeEnclosure +
-    emprBladeServer +
+    //emprBladeEnclosure +
+    //emprBladeServer +
     emprInterfaceCard +
     emprServerAssembly;
 
-  return total.toFixed(2);
+  return total.toFixed();
 };
 
 const createStaticLedgerRow = ({ label, count, criterion, footprint }) =>
@@ -148,8 +148,8 @@ export function otherParameter(
     inputHdd: false,
     motherboard: 0,
     rackServer: 0,
-    bladeEnclosure: 0,
-    bladeServer: 0,
+    //bladeEnclosure: 0,
+    //bladeServer: 0,
     interfaceCard: 0,
     serverAssembly: 0,
   },
@@ -189,18 +189,18 @@ export function otherParameter(
             criterion: "150,00",
             footprint: (basicValue.rackServer * 150.0).toFixed(1),
           }),
-          createStaticLedgerRow({
-            label: "Blade Enclosure",
-            count: basicValue.bladeEnclosure,
-            criterion: "880,00",
-            footprint: (basicValue.bladeEnclosure * 880.0).toFixed(1),
-          }),
-          createStaticLedgerRow({
-            label: "Blade Server",
-            count: basicValue.bladeServer,
-            criterion: "30,90",
-            footprint: (basicValue.bladeServer * 30.9).toFixed(1),
-          }),
+          // createStaticLedgerRow({
+          //   label: "Blade Enclosure",
+          //   count: basicValue.bladeEnclosure,
+          //   criterion: "880,00",
+          //   footprint: (basicValue.bladeEnclosure * 880.0).toFixed(1),
+          // }),
+          // createStaticLedgerRow({
+          //   label: "Blade Server",
+          //   count: basicValue.bladeServer,
+          //   criterion: "30,90",
+          //   footprint: (basicValue.bladeServer * 30.9).toFixed(1),
+          // }),
           createStaticLedgerRow({
             label: "Interface card",
             count: basicValue.interfaceCard,
@@ -225,8 +225,8 @@ export function otherParameter(
                   nbHDD: 0,
                   nbMotherboard: basicValue.motherboard,
                   nbRackServer: basicValue.rackServer,
-                  nbBladeEnclosure: basicValue.bladeEnclosure,
-                  nbBladeServer: basicValue.bladeServer,
+                  //nbBladeEnclosure: basicValue.bladeEnclosure,
+                  //nbBladeServer: basicValue.bladeServer,
                   nbInterfaceCard: basicValue.interfaceCard,
                   nbServerAssembly: basicValue.serverAssembly,
                 }),

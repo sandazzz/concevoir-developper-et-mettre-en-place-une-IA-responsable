@@ -20,7 +20,7 @@ export function updateTotal(IdNumber) {
     gpuValue +
     ssdValue +
     autresValue
-  ).toFixed(2);
+  ).toFixed();
 
   if (total) {
     total.textContent = totalValue;

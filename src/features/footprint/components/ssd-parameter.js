@@ -48,11 +48,11 @@ export function SsdParameter(idNumber) {
   return el;
 }
 
-const calculEmpreinteSSD = (
+export const calculEmpreinteSSD = (
   quantiteGo, // ex: 10000
 ) => {
   const goParSSD = 2000;
-  const dieParGo = 0.0198;
+  const dieParGo = (0.0202 + 0.0206 + 0.0187) / 3;
   const critereDie = 2.2;
   const critereBase = 6.34;
 
@@ -63,5 +63,5 @@ const calculEmpreinteSSD = (
   const empreinte =
     nombreSSDs * (goParSSD * dieParGo * critereDie + critereBase);
 
-  return empreinte.toFixed(2);
+  return empreinte.toFixed();
 };

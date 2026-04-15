@@ -1290,6 +1290,7 @@ tr:hover {
 }
 
 .calculator-studio {
+  position: relative;
   background:
     linear-gradient(
       180deg,
@@ -3020,4 +3021,51 @@ tr:hover {
   overflow: auto;
   background-color: rgb(0, 0, 0);
   background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-close {
+  position: absolute;
+  top: var(--spacing-md);
+  right: var(--spacing-md);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border: 1px solid rgba(45, 106, 79, 0.18);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.9);
+  color: var(--color-gray-600);
+  box-shadow: var(--shadow-sm);
+  font-size: 1.75rem;
+  line-height: 1;
+  font-weight: 400;
+  cursor: pointer;
+  transition:
+    background-color var(--transition-fast),
+    color var(--transition-fast),
+    transform var(--transition-fast),
+    box-shadow var(--transition-fast);
+}
+
+.modal-close:hover {
+  background: var(--color-white);
+  color: var(--color-primary-dark);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-1px);
+}
+
+.modal-close:focus-visible {
+  outline: 3px solid rgba(82, 183, 136, 0.35);
+  outline-offset: 2px;
+}
+
+@media (max-width: 768px) {
+  .modal-close {
+    top: var(--spacing-sm);
+    right: var(--spacing-sm);
+    width: 2.25rem;
+    height: 2.25rem;
+    font-size: 1.5rem;
+  }
 }
